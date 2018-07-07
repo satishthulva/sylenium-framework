@@ -30,7 +30,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
 
     @Override
     public boolean shouldRunDistributed() {
-        return Boolean.valueOf(retrieveProperty("use.selenium.grid"));
+        return Boolean.parseBoolean(retrieveProperty("use.selenium.grid"));
     }
 
     @Override
@@ -43,8 +43,14 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         return Integer.parseInt(retrieveProperty("explicit.wait.timeout"));
     }
 
+    @Override
     public String getBrowserDimensions() {
         return retrieveProperty("browser.dimensions");
+    }
+
+    @Override
+    public boolean browserUseCustomDimensions() {
+        return Boolean.parseBoolean(retrieveProperty("browser.use.custom.dimensions"));
     }
 
     private String retrieveProperty(final String key) {

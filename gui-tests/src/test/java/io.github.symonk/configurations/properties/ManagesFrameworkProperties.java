@@ -12,4 +12,8 @@ public interface ManagesFrameworkProperties {
 
     int getWaitTimeout();
 
+    String getBrowserDimensions();
+
+    boolean browserUseCustomDimensions();
+
 }
