@@ -5,7 +5,6 @@ import com.codeborne.selenide.logevents.LogEvent;
 import com.codeborne.selenide.logevents.LogEventListener;
 import io.qameta.allure.Allure;
 import io.qameta.allure.AllureLifecycle;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StatusDetails;
 import io.qameta.allure.model.StepResult;
@@ -34,6 +33,28 @@ public class CustomListener implements LogEventListener {
 
     public CustomListener() {
         this.lifecycle = Allure.getLifecycle();
+    }
+
+    private static byte[] getLogFileBytes(final String testName) throws IOException {
+        File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
+        log.info("Adding log file: " + files[0].getPath());
+        return Files.readAllBytes(Paths.get(files[0].getAbsolutePath()));
+    }
+
+    private static byte[] getScreenshotBytes() {
+        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+    }
+
+    private static byte[] getPageSourceBytes() {
+        return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
+    }
+
+    private static File[] listFilesMatching(File root, String regex) {
+        if (!root.isDirectory()) {
+            throw new IllegalArgumentException(root + " is not a directory.");
+        }
+        final Pattern p = Pattern.compile(regex);
+        return root.listFiles(file -> p.matcher(file.getName()).matches());
     }
 
     public CustomListener withScreenshot(final boolean withScreenshot) {
@@ -90,28 +111,6 @@ public class CustomListener implements LogEventListener {
             }
             lifecycle.stopStep(stepUUID);
         });
-    }
-
-    private static byte[] getLogFileBytes(final String testName) throws IOException {
-        File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
-        log.info("Adding log file: " + files[0].getPath());
-        return Files.readAllBytes(Paths.get(files[0].getAbsolutePath()));
-    }
-
-    private static byte[] getScreenshotBytes() {
-        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }
-
-    private static byte[] getPageSourceBytes() {
-        return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
-    }
-
-    private static File[] listFilesMatching(File root, String regex) {
-        if (!root.isDirectory()) {
-            throw new IllegalArgumentException(root + " is not a directory.");
-        }
-        final Pattern p = Pattern.compile(regex);
-        return root.listFiles(file -> p.matcher(file.getName()).matches());
     }
 
 

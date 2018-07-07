@@ -1,9 +1,11 @@
 package io.github.symonk.configurations.properties;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.util.Properties;
 
-
+@Slf4j
 public class AutomationProperties implements ManagesFrameworkProperties {
 
     private final Properties properties = new Properties();
@@ -12,6 +14,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         try {
             properties.load(this.getClass().getClassLoader().getResourceAsStream("framework.properties"));
         } catch (IOException ex) {
+            log.error("unable to find the framework properties file");
         }
     }
 
@@ -43,6 +46,4 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     private String retrieveProperty(final String key) {
         return properties.getProperty(key);
     }
-
-
 }

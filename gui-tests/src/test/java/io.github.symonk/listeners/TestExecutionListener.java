@@ -28,7 +28,7 @@ public class TestExecutionListener implements IExecutionListener {
         Configuration.baseUrl = automationProperties.getBaseUrl();
         Configuration.browser = automationProperties.getBrowser();
         Configuration.timeout = automationProperties.getWaitTimeout();
-        if(automationProperties.shouldRunDistributed()) Configuration.remote = automationProperties.getGridEndpoint();
+        if (automationProperties.shouldRunDistributed()) Configuration.remote = automationProperties.getGridEndpoint();
 
     }
 
