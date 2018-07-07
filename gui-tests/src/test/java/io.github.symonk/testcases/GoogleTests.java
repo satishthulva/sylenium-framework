@@ -2,6 +2,8 @@ package io.github.symonk.testcases;
 
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.github.symonk.configurations.selenide.CustomListener;
 import io.github.symonk.pageobjects.GooglePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +21,7 @@ public class GoogleTests extends TestBaseTemplate {
 
     @BeforeClass(description = "Test Configuration")
     public void beforeClass() {
-
+        SelenideLogger.addListener("CustomListener", new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true));
     }
 
     @Test(description = "As a user I want to do something")
@@ -31,22 +33,13 @@ public class GoogleTests extends TestBaseTemplate {
     public void testOne() {
         GooglePage googlePage = open("https://www.google.co.uk", GooglePage.class);
         googlePage.searchFor("simonk");
-        $("fail").shouldNot(Condition.visible);
-        Allure.addAttachment("My attachment", "datString");
+        $("fail").should(Condition.visible);
     }
 
-    @Test
-    public void testTwo() {
-        GooglePage googlePage = open("https://www.thesun.co.uk", GooglePage.class);
-    }
 
-    @Test
-    public void testThree() {
-        GooglePage googlePage = open("https://www.bbc.co.uk", GooglePage.class);
-    }
 
     @AfterClass(description = "Test Teardown")
     public void afterClass() {
-
+        SelenideLogger.removeAllListeners();
     }
 }
