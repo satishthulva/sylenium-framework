@@ -43,6 +43,10 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         return Integer.parseInt(retrieveProperty("explicit.wait.timeout"));
     }
 
+    public String getBrowserDimensions() {
+        return retrieveProperty("browser.dimensions");
+    }
+
     private String retrieveProperty(final String key) {
         return properties.getProperty(key);
     }
