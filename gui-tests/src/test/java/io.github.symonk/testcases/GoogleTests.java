@@ -2,11 +2,8 @@ package io.github.symonk.testcases;
 
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.symonk.pageobjects.GooglePage;
 import io.qameta.allure.*;
-import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +19,7 @@ public class GoogleTests extends TestBaseTemplate {
 
     @BeforeClass(description = "Test Configuration")
     public void beforeClass() {
-        SelenideLogger.addListener("allureSelenide", new AllureSelenide());
+
     }
 
     @Test(description = "As a user I want to do something")
@@ -34,7 +31,7 @@ public class GoogleTests extends TestBaseTemplate {
     public void testOne() {
         GooglePage googlePage = open("https://www.google.co.uk", GooglePage.class);
         googlePage.searchFor("simonk");
-        $("fail").should(Condition.visible);
+        $("fail").shouldNot(Condition.visible);
         Allure.addAttachment("My attachment", "datString");
     }
 
@@ -50,6 +47,6 @@ public class GoogleTests extends TestBaseTemplate {
 
     @AfterClass(description = "Test Teardown")
     public void afterClass() {
-        SelenideLogger.removeListener("allureSelenide");
+
     }
 }
