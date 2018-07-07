@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Full Regression" verbose="2">
+    <listeners>
+        <listener class-name="io.github.symonk.listeners.TestExecutionListener"/>
+    </listeners>
+    <test name="Product Regression">
+        <classes>
+            <class name="io.github.symonk.testcases.GoogleTests"/>
+        </classes>
+    </test>
+</suite>
