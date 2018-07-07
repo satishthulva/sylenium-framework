@@ -2,13 +2,11 @@ package io.github.symonk.testcases;
 
 
 import io.github.symonk.configurations.dependency_injection.FrameworkModule;
+import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.GooglePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Guice;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -17,6 +15,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Epic("This is an Epic")
 @Feature("This is a Feature")
 @Guice(modules = FrameworkModule.class)
+@Listeners(TestExecutionListener.class)
 public class GoogleTests extends TestBaseTemplate {
 
     @BeforeClass(description = "Test Configuration")
