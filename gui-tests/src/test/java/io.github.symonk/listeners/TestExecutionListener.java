@@ -27,7 +27,9 @@ public class TestExecutionListener implements IExecutionListener {
     private void configureSelenide() {
         Configuration.baseUrl = automationProperties.getBaseUrl();
         Configuration.browser = automationProperties.getBrowser();
+        Configuration.timeout = automationProperties.getWaitTimeout();
         if(automationProperties.shouldRunDistributed()) Configuration.remote = automationProperties.getGridEndpoint();
+
     }
 
 }

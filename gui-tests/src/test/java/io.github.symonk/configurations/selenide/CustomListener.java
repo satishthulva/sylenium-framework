@@ -30,7 +30,7 @@ public class CustomListener implements LogEventListener {
     private boolean withScreenshot;
     private boolean withPageSource;
     private boolean withTestLog;
-    private String currentLog = "testOne";
+    private String currentLog = "";
 
     public CustomListener() {
         this.lifecycle = Allure.getLifecycle();
@@ -71,11 +71,11 @@ public class CustomListener implements LogEventListener {
                     lifecycle.addAttachment("Screenshot", "image/png", "png", getScreenshotBytes());
                 }
                 if (withPageSource) {
-                    lifecycle.addAttachment("Pagesource", "text/html", "png", getPageSourceBytes());
+                    lifecycle.addAttachment("Page source", "text/html", "png", getPageSourceBytes());
                 }
                 try {
                     if (withTestLog) {
-                        getJsonLogAsAttachment(currentLog);
+                        lifecycle.addAttachment("Test Log", "application/json", "json", getLogFileBytes(currentLog));
                     }
                 } catch (final IOException exception) {
                     log.error("Could not find the log file for the current test, skipping the attachment");
@@ -92,9 +92,7 @@ public class CustomListener implements LogEventListener {
         });
     }
 
-
-    @Attachment(value = "Test Log", type = "application/json")
-    private static byte[] getJsonLogAsAttachment(String testName) throws IOException {
+    private static byte[] getLogFileBytes(final String testName) throws IOException {
         File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
         log.info("Adding log file: " + files[0].getPath());
         return Files.readAllBytes(Paths.get(files[0].getAbsolutePath()));
