@@ -53,6 +53,17 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         return Boolean.parseBoolean(retrieveProperty("browser.use.custom.dimensions"));
     }
 
+    @Override
+    public boolean retryOnFailure() {
+        return Boolean.parseBoolean(retrieveProperty("retry.failures"));
+    }
+
+    @Override
+    public int numberOfRetries() {
+        return Integer.parseInt(retrieveProperty("number.of.retries"));
+    }
+
+
     private String retrieveProperty(final String key) {
         return properties.getProperty(key);
     }

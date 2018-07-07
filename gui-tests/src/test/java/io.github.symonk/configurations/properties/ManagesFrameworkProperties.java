@@ -16,4 +16,8 @@ public interface ManagesFrameworkProperties {
 
     boolean browserUseCustomDimensions();
 
+    boolean retryOnFailure();
+
+    int numberOfRetries();
+
 }
