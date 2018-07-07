@@ -20,4 +20,6 @@ public interface ManagesFrameworkProperties {
 
     int numberOfRetries();
 
+    boolean tunnelThroughProxy();
+
 }

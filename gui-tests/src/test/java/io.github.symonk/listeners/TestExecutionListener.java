@@ -35,7 +35,6 @@ public class TestExecutionListener implements IExecutionListener {
         Configuration.timeout = automationProperties.getWaitTimeout();
 
 
-
     }
 
 }

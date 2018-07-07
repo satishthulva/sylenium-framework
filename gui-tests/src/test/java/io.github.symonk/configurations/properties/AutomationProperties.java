@@ -63,6 +63,11 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         return Integer.parseInt(retrieveProperty("number.of.retries"));
     }
 
+    @Override
+    public boolean tunnelThroughProxy() {
+        return Boolean.parseBoolean(retrieveProperty("tunnel.through.proxy"));
+    }
+
 
     private String retrieveProperty(final String key) {
         return properties.getProperty(key);
