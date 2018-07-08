@@ -6,28 +6,27 @@ import java.util.Map;
 
 public interface ManagesFrameworkProperties {
 
-    String getBaseUrl();
+  String getBaseUrl();
 
-    String getBrowser();
+  String getBrowser();
 
-    boolean shouldRunDistributed();
+  boolean shouldRunDistributed();
 
-    String getGridEndpoint();
+  String getGridEndpoint();
 
-    int getWaitTimeout();
+  int getWaitTimeout();
 
-    String getBrowserDimensions();
+  String getBrowserDimensions();
 
-    boolean browserUseCustomDimensions();
+  boolean browserUseCustomDimensions();
 
-    boolean retryOnFailure();
+  boolean retryOnFailure();
 
-    int numberOfRetries();
+  int numberOfRetries();
 
-    boolean tunnelThroughProxy();
+  boolean tunnelThroughProxy();
 
-    Map<String, String> getPropertiesAsMap();
+  Map<String, String> getPropertiesAsMap();
 
-    SupportedLanguage getLanguage();
-
+  SupportedLanguage getLanguage();
 }

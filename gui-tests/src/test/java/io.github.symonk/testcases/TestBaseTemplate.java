@@ -17,47 +17,46 @@ import java.lang.reflect.Method;
 @Slf4j
 public class TestBaseTemplate {
 
-    private static final String TEST_NAME = "test";
-    private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+  private static final String TEST_NAME = "test";
+  private static final CustomListener listener =
+      new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
 
-    private final ManagesFrameworkProperties properties = new AutomationProperties();
-    final ProvidesLanguageValues languageHelper = new LanguageHelper(properties);
+  private final ManagesFrameworkProperties properties = new AutomationProperties();
+  final ProvidesLanguageValues languageHelper = new LanguageHelper(properties);
 
-    @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
-    public void initiateLogger(final Method method) {
-        startTestLogging(method.getName());
-        log.info("Executing: + " + method.getName());
-        CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
-    }
+  @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
+  public void initiateLogger(final Method method) {
+    startTestLogging(method.getName());
+    log.info("Executing: + " + method.getName());
+    CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
+  }
 
-    @AfterMethod(description = "Parse Log File For Test")
-    public void parseLogFileForTest(final Method method) {
-        CustomSelenideLogger.setListenerLogFile(method.getName());
-        stopTestLogging();
-    }
+  @AfterMethod(description = "Parse Log File For Test")
+  public void parseLogFileForTest(final Method method) {
+    CustomSelenideLogger.setListenerLogFile(method.getName());
+    stopTestLogging();
+  }
 
-    @AfterMethod(description = "Clear Browser Session")
-    public void preventBrowserSessionLeakage() {
-        Selenide.clearBrowserLocalStorage();
-        Selenide.clearBrowserCookies();
-        Selenide.close();
-    }
+  @AfterMethod(description = "Clear Browser Session")
+  public void preventBrowserSessionLeakage() {
+    Selenide.clearBrowserLocalStorage();
+    Selenide.clearBrowserCookies();
+    Selenide.close();
+  }
 
-    @AfterMethod(description = "Close Selenide Listener")
-    public void unregisterTestListeners() {
-        CustomSelenideLogger.removeAllListeners();
-    }
+  @AfterMethod(description = "Close Selenide Listener")
+  public void unregisterTestListeners() {
+    CustomSelenideLogger.removeAllListeners();
+  }
 
-    private void startTestLogging(String name) {
-        log.info("Multi threaded logger initialized for test: " + name);
-        MDC.put(TEST_NAME, name);
-    }
+  private void startTestLogging(String name) {
+    log.info("Multi threaded logger initialized for test: " + name);
+    MDC.put(TEST_NAME, name);
+  }
 
-    private String stopTestLogging() {
-        String name = MDC.get(TEST_NAME);
-        MDC.remove(TEST_NAME);
-        return name;
-    }
-
-
+  private String stopTestLogging() {
+    String name = MDC.get(TEST_NAME);
+    MDC.remove(TEST_NAME);
+    return name;
+  }
 }

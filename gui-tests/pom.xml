@@ -11,7 +11,6 @@
 
     <artifactId>gui-tests</artifactId>
 
-
     <build>
         <plugins>
             <plugin>

@@ -10,18 +10,18 @@ import java.util.Properties;
 @Slf4j
 public class FrameworkModule extends AbstractModule {
 
-    @Override
-    protected void configure() {
-        prepareAutomationProperties();
-    }
+  @Override
+  protected void configure() {
+    prepareAutomationProperties();
+  }
 
-    private void prepareAutomationProperties() {
-        Properties properties = new Properties();
-        try {
-            properties.load(getClass().getClassLoader().getResourceAsStream("framework.properties"));
-            Names.bindProperties(binder(), properties);
-        } catch (IOException e) {
-            log.error("unable to find/load the config for test automation properties");
-        }
+  private void prepareAutomationProperties() {
+    Properties properties = new Properties();
+    try {
+      properties.load(getClass().getClassLoader().getResourceAsStream("framework.properties"));
+      Names.bindProperties(binder(), properties);
+    } catch (IOException e) {
+      log.error("unable to find/load the config for test automation properties");
     }
+  }
 }

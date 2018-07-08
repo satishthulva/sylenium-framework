@@ -1,6 +1,5 @@
 package io.github.symonk.testcases;
 
-
 import io.github.symonk.configurations.dependency_injection.FrameworkModule;
 import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.GooglePage;
@@ -18,56 +17,40 @@ import static com.codeborne.selenide.Selenide.open;
 @Listeners(TestExecutionListener.class)
 public class GoogleTests extends TestBaseTemplate {
 
-    @BeforeClass(description = "Test Configuration")
-    public void beforeClass() {
+  @BeforeClass(description = "Test Configuration")
+  public void beforeClass() {}
 
-    }
+  @Test(description = "As a user I want to do something")
+  @Story("This is a story")
+  @Link("www.google.co.uk")
+  @Issue("123")
+  @TmsLink("456")
+  @Severity(SeverityLevel.CRITICAL)
+  public void testOne() {
+    open("/", GooglePage.class).searchFor("simon").someElement().should(visible);
+  }
 
-    @Test(description = "As a user I want to do something")
-    @Story("This is a story")
-    @Link("www.google.co.uk")
-    @Issue("123")
-    @TmsLink("456")
-    @Severity(SeverityLevel.CRITICAL)
-    public void testOne() {
-        open("/", GooglePage.class)
-                .searchFor("simon")
-                .someElement()
-                .should(visible);
-    }
+  @Test(description = "Description Two")
+  @Story("Another Story")
+  @Link("www.bbc.co.uk")
+  @Issue("999")
+  @TmsLink("888")
+  @Severity(SeverityLevel.CRITICAL)
+  public void testTwo() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
 
-    @Test(description = "Description Two")
-    @Story("Another Story")
-    @Link("www.bbc.co.uk")
-    @Issue("999")
-    @TmsLink("888")
-    @Severity(SeverityLevel.CRITICAL)
-    public void testTwo() {
-        open("/", GooglePage.class)
-                .searchFor("jenkins")
-                .someElement()
-                .should(visible);
-    }
+  @Test(description = "This Test Is Disabled", enabled = false)
+  public void testThree() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
 
-    @Test(description = "This Test Is Disabled", enabled = false)
-    public void testThree() {
-        open("/", GooglePage.class)
-                .searchFor("jenkins")
-                .someElement()
-                .should(visible);
-    }
+  @Test(description = "This Test Is Disabled")
+  public void testFour() {
+    log.info(languageHelper.getResource("foo") + " is really foo?");
+    log.info(languageHelper.getResource("bar") + " is really bar?");
+  }
 
-    @Test(description = "This Test Is Disabled")
-    public void testFour() {
-        log.info(languageHelper.getResource("foo") + "is really foo?");
-    }
-
-
-
-
-
-    @AfterClass(description = "Test Teardown")
-    public void afterClass() {
-
-    }
+  @AfterClass(description = "Test Teardown")
+  public void afterClass() {}
 }

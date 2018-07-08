@@ -10,34 +10,33 @@ import org.testng.IExecutionListener;
 @Slf4j
 public class TestExecutionListener implements IExecutionListener {
 
-    private final AutomationProperties automationProperties = new AutomationProperties();
-    private final ReportInteractable reportHelper = new ReportHelper(automationProperties);
+  private final AutomationProperties automationProperties = new AutomationProperties();
+  private final ReportInteractable reportHelper = new ReportHelper(automationProperties);
 
-    @Override
-    public void onExecutionStart() {
-        log.info("test started!");
-        configureTestRun();
-        pushReportInformation();
-    }
+  @Override
+  public void onExecutionStart() {
+    log.info("test run starting!");
+    configureTestRun();
+    pushReportInformation();
+  }
 
-    @Override
-    public void onExecutionFinish() {
-        log.info("test completed!");
-    }
+  @Override
+  public void onExecutionFinish() {
+    log.info("test run finished!");
+  }
 
-    private void pushReportInformation() {
-        this.reportHelper.pushDynamicTestRunPropertiesToReport();
-    }
+  private void pushReportInformation() {
+    this.reportHelper.pushDynamicTestRunPropertiesToReport();
+  }
 
-    private void configureTestRun() {
-        if (automationProperties.shouldRunDistributed()) Configuration.remote = automationProperties.getGridEndpoint();
-        if (automationProperties.browserUseCustomDimensions())
-            Configuration.browserSize = automationProperties.getBrowserDimensions();
+  private void configureTestRun() {
+    if (automationProperties.shouldRunDistributed())
+      Configuration.remote = automationProperties.getGridEndpoint();
+    if (automationProperties.browserUseCustomDimensions())
+      Configuration.browserSize = automationProperties.getBrowserDimensions();
 
-        Configuration.baseUrl = automationProperties.getBaseUrl();
-        Configuration.browser = automationProperties.getBrowser();
-        Configuration.timeout = automationProperties.getWaitTimeout();
-
-    }
-
+    Configuration.baseUrl = automationProperties.getBaseUrl();
+    Configuration.browser = automationProperties.getBrowser();
+    Configuration.timeout = automationProperties.getWaitTimeout();
+  }
 }

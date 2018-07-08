@@ -5,28 +5,27 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Locale;
 
 /**
- * Supported framework languages, used for decoupling visual text assertions and locators
- * from hardcoded test data
+ * Supported framework languages, used for decoupling visual text assertions and locators from
+ * hardcoded test data
  */
 @Slf4j
 public enum SupportedLanguage {
+  ENGLISH("english", "en"),
+  FRENCH("french", "fr");
 
-    ENGLISH("english", "en");
+  private final String resourceFile;
+  private final Locale locale;
 
-    private final String resourceFile;
-    private final Locale locale;
+  SupportedLanguage(final String resourceFile, final String locale) {
+    this.resourceFile = resourceFile;
+    this.locale = new Locale(locale);
+  }
 
-    SupportedLanguage(final String resourceFile, final String locale) {
-        this.resourceFile = resourceFile;
-        this.locale = new Locale(locale);
-    }
+  public String getResourceFile() {
+    return resourceFile;
+  }
 
-    public String getResourceFile() {
-        return resourceFile;
-    }
-
-    public Locale getLocale() {
-        return this.locale;
-    }
-
+  public Locale getLocale() {
+    return this.locale;
+  }
 }
