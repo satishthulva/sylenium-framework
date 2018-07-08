@@ -49,11 +49,6 @@ public class RandomTests extends TestBaseTemplate {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Localisation Test")
-  public void testFour() {
-    log.info(languageHelper.getResource("foo") + " is really foo?");
-    log.info(languageHelper.getResource("bar") + " is really bar?");
-  }
 
   @AfterClass(description = "Test Teardown")
   public void afterClass() {
