@@ -4,18 +4,17 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
 
 @Slf4j
 public class GooglePage {
 
-  @FindBy(name = "q")
-  private SelenideElement searchBox;
-
   @Step("Searching for a string {0}")
   public GooglePage searchFor(final String term) {
     log.info("Searching for a term");
-    searchBox.val(term).pressEnter();
+    $(By.name("q")).val(term).pressEnter();
     return this;
   }
 
@@ -26,6 +25,6 @@ public class GooglePage {
 
   @Step("Returning some random element")
   public SelenideElement someElement() {
-    return searchBox;
+    return $(By.name("q"));
   }
 }
