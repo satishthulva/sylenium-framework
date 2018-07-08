@@ -11,6 +11,7 @@
     <modules>
         <module>api-tests</module>
         <module>gui-tests</module>
+        <module>performance-tests</module>
     </modules>
 
     <properties>
@@ -35,6 +36,7 @@
         <guice.version>4.2.0</guice.version>
         <guava.version>25.1-jre</guava.version>
         <automation.assistant.version>1.2</automation.assistant.version>
+        <jmeter.version>2.7.0</jmeter.version>
     </properties>
 
     <dependencies>
@@ -113,6 +115,12 @@
             <groupId>io.github.symonk</groupId>
             <artifactId>Automation-Assistant</artifactId>
             <version>${automation.assistant.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.lazerycode.jmeter/jmeter-maven-plugin -->
+        <dependency>
+            <groupId>com.lazerycode.jmeter</groupId>
+            <artifactId>jmeter-maven-plugin</artifactId>
+            <version>${jmeter.version}</version>
         </dependency>
     </dependencies>
 
