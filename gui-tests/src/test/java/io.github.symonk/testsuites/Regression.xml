@@ -2,6 +2,7 @@
 <suite name="Full Regression" verbose="2" parallel="methods">
     <listeners>
         <listener class-name="io.github.symonk.listeners.TestExecutionListener"/>
+        <listener class-name="io.github.symonk.listeners.AnnotationTransformationListener"/>
     </listeners>
     <test name="Regression Chrome">
         <parameter name="browser" value="chrome"/>
