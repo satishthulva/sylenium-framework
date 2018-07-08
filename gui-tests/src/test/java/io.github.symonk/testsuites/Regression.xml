@@ -1,9 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Full Regression" verbose="2">
+<suite name="Full Regression" verbose="2" parallel="methods">
     <listeners>
         <listener class-name="io.github.symonk.listeners.TestExecutionListener"/>
     </listeners>
-    <test name="Product Regression">
+    <test name="Regression Chrome">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="io.github.symonk.testcases.RandomTests"/>
+        </classes>
+    </test>
+
+    <test name="Regression Firefox">
+        <parameter name="browser" value="firefox" />
         <classes>
             <class name="io.github.symonk.testcases.RandomTests"/>
         </classes>

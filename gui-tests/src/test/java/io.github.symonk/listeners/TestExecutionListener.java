@@ -36,7 +36,6 @@ public class TestExecutionListener implements IExecutionListener {
       Configuration.browserSize = automationProperties.getBrowserDimensions();
 
     Configuration.baseUrl = automationProperties.getBaseUrl();
-    Configuration.browser = automationProperties.getBrowser();
     Configuration.timeout = automationProperties.getWaitTimeout();
   }
 }

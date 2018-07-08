@@ -1,5 +1,6 @@
 package io.github.symonk.testcases;
 
+import com.codeborne.selenide.Configuration;
 import io.github.symonk.configurations.dependency_injection.FrameworkModule;
 import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.GooglePage;
@@ -17,13 +18,14 @@ import static com.codeborne.selenide.Selenide.open;
 @Listeners(TestExecutionListener.class)
 public class RandomTests extends TestBaseTemplate {
 
+  @Parameters({"browser"})
   @BeforeClass(alwaysRun = true, description = "Test Configuration")
-  public void beforeClass() {
+  public void beforeClass(String browser) {
     log.info("do something to begin with!");
-    final int four = 4 + 4;
+    Configuration.browser = browser;
   }
 
-  @Test(description = "Test One!", invocationCount = 10)
+  @Test(description = "Test One!", invocationCount = 1)
   @Story("This is a story")
   @Link(name = "allure", type = "mylink")
   @Issue("123")
@@ -33,7 +35,7 @@ public class RandomTests extends TestBaseTemplate {
     open("/", GooglePage.class).searchFor("simon").someElement().should(visible);
   }
 
-  @Test(description = "Test Two!", invocationCount = 10)
+  @Test(description = "Test Two!", invocationCount = 1)
   @Story("Another Story")
   @Link(name = "allure", type = "mylink")
   @Issue("999")
@@ -46,49 +48,49 @@ public class RandomTests extends TestBaseTemplate {
         .should(visible);
   }
 
-  @Test(description = "Test Three!", invocationCount = 10)
+  @Test(description = "Test Three!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testThree() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Four!", invocationCount = 10)
+  @Test(description = "Test Four!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testFour() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Five!", invocationCount = 10)
+  @Test(description = "Test Five!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testFive() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Six!", invocationCount = 10)
+  @Test(description = "Test Six!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testSix() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Seven!", invocationCount = 10)
+  @Test(description = "Test Seven!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testSeven() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Eight!", invocationCount = 10)
+  @Test(description = "Test Eight!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testEight() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Nine!", invocationCount = 10)
+  @Test(description = "Test Nine!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testNine() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Ten!", invocationCount = 10)
+  @Test(description = "Test Ten!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
   public void testTen() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
@@ -101,7 +103,5 @@ public class RandomTests extends TestBaseTemplate {
   }
 
   @AfterClass(alwaysRun = true, description = "Test Teardown")
-  public void afterClass() {
-    final int five = 5 + 5;
-  }
+  public void afterClass() {}
 }
