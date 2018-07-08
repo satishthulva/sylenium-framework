@@ -3,7 +3,7 @@ node {
    stage('FETCH SRC') {
      git 'https://github.com/symonk/Selenide-TestNG-Allure2-Framework.git'
    }
-   catchErrpr {
+   catchError {
        stage('Start-Grid') {
            bat '"gui-tests/run_remote_grid.bat"'
        }
