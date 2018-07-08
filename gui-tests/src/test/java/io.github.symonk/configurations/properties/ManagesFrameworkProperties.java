@@ -1,5 +1,7 @@
 package io.github.symonk.configurations.properties;
 
+import java.util.Map;
+
 public interface ManagesFrameworkProperties {
 
     String getBaseUrl();
@@ -21,5 +23,7 @@ public interface ManagesFrameworkProperties {
     int numberOfRetries();
 
     boolean tunnelThroughProxy();
+
+    Map<String, String> getPropertiesAsMap();
 
 }
