@@ -1,2 +1,2 @@
 call mvn clean 
-call mvn test -Dselenide.browser=firefox -Dthread.count=2
+call mvn test -Dselenide.browser=chrome -Dthread.count=4
