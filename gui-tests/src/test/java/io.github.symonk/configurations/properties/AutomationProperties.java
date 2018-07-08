@@ -102,7 +102,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream(FRAMEWORK_PROPERTIES_FILE));
         } catch (IOException ex) {
-            throw new InvalidArgumentException(NO_PROPERTIES_FILE_FOUND);
+            throw new IllegalArgumentException(NO_PROPERTIES_FILE_FOUND);
         }
     }
 
