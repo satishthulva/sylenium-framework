@@ -40,7 +40,7 @@ public class ReportHelper implements ReportInteractable {
         properties.getPropertiesAsMap().forEach(environmentProperties::setProperty);
 
 
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         try {
             Path pathToFile = Paths.get(DEFAULT_DIRECTORY);
             if (!removeFileIfExists(pathToFile)) {
@@ -49,14 +49,9 @@ public class ReportHelper implements ReportInteractable {
             Files.createFile(pathToFile);
             fos = new FileOutputStream(pathToFile.toString());
             environmentProperties.store(fos, PROPERTIES_HEADER);
-        } catch (IOException exception) {
+            fos.close();
+        } catch(IOException exception) {
             abortTheTestRun(IO_EXCEPTION);
-        } finally {
-            try {
-                Objects.requireNonNull(fos).close();
-            } catch (Exception exception) {
-                log.error(STREAM_CLOSE_ERROR, exception);
-            }
         }
     }
 
