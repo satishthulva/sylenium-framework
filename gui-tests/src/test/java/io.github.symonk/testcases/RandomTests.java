@@ -23,7 +23,7 @@ public class RandomTests extends TestBaseTemplate {
     final int four = 4 + 4;
   }
 
-  @Test(description = "Test One!")
+  @Test(description = "Test One!", invocationCount = 10)
   @Story("This is a story")
   @Link(name = "allure", type = "mylink")
   @Issue("123")
@@ -33,7 +33,7 @@ public class RandomTests extends TestBaseTemplate {
     open("/", GooglePage.class).searchFor("simon").someElement().should(visible);
   }
 
-  @Test(description = "Test Two!")
+  @Test(description = "Test Two!", invocationCount = 10)
   @Story("Another Story")
   @Link(name = "allure", type = "mylink")
   @Issue("999")
@@ -46,49 +46,49 @@ public class RandomTests extends TestBaseTemplate {
         .should(visible);
   }
 
-  @Test(description = "Test Three!")
+  @Test(description = "Test Three!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testThree() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Four!")
+  @Test(description = "Test Four!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testFour() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Five!")
+  @Test(description = "Test Five!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testFive() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Six!")
+  @Test(description = "Test Six!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testSix() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Seven!")
+  @Test(description = "Test Seven!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testSeven() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Eight!")
+  @Test(description = "Test Eight!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testEight() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Nine!")
+  @Test(description = "Test Nine!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testNine() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "Test Ten!")
+  @Test(description = "Test Ten!", invocationCount = 10)
   @Link(name = "allure", type = "mylink")
   public void testTen() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
