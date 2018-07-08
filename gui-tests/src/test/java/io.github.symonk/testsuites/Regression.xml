@@ -4,14 +4,14 @@
         <listener class-name="io.github.symonk.listeners.TestExecutionListener"/>
     </listeners>
     <test name="Regression Chrome">
-        <parameter name="browser" value="chrome" />
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.symonk.testcases.RandomTests"/>
         </classes>
     </test>
 
     <test name="Regression Firefox">
-        <parameter name="browser" value="firefox" />
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="io.github.symonk.testcases.RandomTests"/>
         </classes>
