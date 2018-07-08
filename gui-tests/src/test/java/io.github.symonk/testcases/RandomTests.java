@@ -18,7 +18,9 @@ import static com.codeborne.selenide.Selenide.open;
 public class RandomTests extends TestBaseTemplate {
 
   @BeforeClass(description = "Test Configuration")
-  public void beforeClass() {}
+  public void beforeClass() {
+    log.info("do something to begin with!");
+  }
 
   @Test(description = "As a user I want to do something")
   @Story("This is a story")
@@ -53,5 +55,7 @@ public class RandomTests extends TestBaseTemplate {
   }
 
   @AfterClass(description = "Test Teardown")
-  public void afterClass() {}
+  public void afterClass() {
+    log.info("do something!");
+  }
 }
