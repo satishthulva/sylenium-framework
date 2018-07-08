@@ -22,7 +22,7 @@ public class RandomTests extends TestBaseTemplate {
 
   @Test(description = "As a user I want to do something")
   @Story("This is a story")
-  @Link("www.google.co.uk")
+  @Link(name = "allure", type = "mylink")
   @Issue("123")
   @TmsLink("456")
   @Severity(SeverityLevel.CRITICAL)
@@ -32,7 +32,7 @@ public class RandomTests extends TestBaseTemplate {
 
   @Test(description = "Description Two")
   @Story("Another Story")
-  @Link("www.bbc.co.uk")
+  @Link(name = "allure", type = "mylink")
   @Issue("999")
   @TmsLink("888")
   @Severity(SeverityLevel.CRITICAL)
@@ -41,11 +41,12 @@ public class RandomTests extends TestBaseTemplate {
   }
 
   @Test(description = "This Test Is Disabled", enabled = false)
+  @Link(name = "allure", type = "mylink")
   public void testThree() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "This Test Is Disabled")
+  @Test(description = "Localisation Test")
   public void testFour() {
     log.info(languageHelper.getResource("foo") + " is really foo?");
     log.info(languageHelper.getResource("bar") + " is really bar?");
