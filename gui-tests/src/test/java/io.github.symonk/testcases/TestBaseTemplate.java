@@ -31,20 +31,20 @@ public class TestBaseTemplate {
     CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
   }
 
-  @AfterMethod(description = "Parse Log File For Test")
+  @AfterMethod(alwaysRun = true, description = "Parse Log File For Test")
   public void parseLogFileForTest(final Method method) {
     CustomSelenideLogger.setListenerLogFile(method.getName());
     stopTestLogging();
   }
 
-  @AfterMethod(description = "Clear Browser Session")
+  @AfterMethod(alwaysRun = true, description = "Clear Browser Session")
   public void preventBrowserSessionLeakage() {
     Selenide.clearBrowserLocalStorage();
     Selenide.clearBrowserCookies();
     Selenide.close();
   }
 
-  @AfterMethod(description = "Close Selenide Listener")
+  @AfterMethod(alwaysRun = true, description = "Close Selenide Listener")
   public void unregisterTestListeners() {
     CustomSelenideLogger.removeAllListeners();
   }

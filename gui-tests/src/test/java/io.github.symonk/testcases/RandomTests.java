@@ -20,6 +20,7 @@ public class RandomTests extends TestBaseTemplate {
   @BeforeClass(description = "Test Configuration")
   public void beforeClass() {
     log.info("do something to begin with!");
+    final int four = 4 + 4;
   }
 
   @Test(description = "As a user I want to do something")
@@ -39,7 +40,7 @@ public class RandomTests extends TestBaseTemplate {
   @TmsLink("888")
   @Severity(SeverityLevel.CRITICAL)
   public void testTwo() {
-    open("/", GooglePage.class).searchFor("not-duplicate").someElement().should(visible);
+    open("https://www.google.co.uk", GooglePage.class).searchFor("not-duplicate").someElement().should(visible);
   }
 
   @Test(description = "This Test Is Disabled", enabled = false)
@@ -56,6 +57,6 @@ public class RandomTests extends TestBaseTemplate {
 
   @AfterClass(description = "Test Teardown")
   public void afterClass() {
-    log.info("do something!");
+    final int five = 5 + 5;
   }
 }
