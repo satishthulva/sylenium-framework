@@ -5,7 +5,7 @@
     </listeners>
     <test name="Product Regression">
         <classes>
-            <class name="io.github.symonk.testcases.GoogleTests"/>
+            <class name="io.github.symonk.testcases.RandomTests"/>
         </classes>
     </test>
 </suite>

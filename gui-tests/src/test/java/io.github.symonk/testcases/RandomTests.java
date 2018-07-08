@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Feature("This is a Feature")
 @Guice(modules = FrameworkModule.class)
 @Listeners(TestExecutionListener.class)
-public class GoogleTests extends TestBaseTemplate {
+public class RandomTests extends TestBaseTemplate {
 
   @BeforeClass(description = "Test Configuration")
   public void beforeClass() {}
@@ -37,7 +37,7 @@ public class GoogleTests extends TestBaseTemplate {
   @TmsLink("888")
   @Severity(SeverityLevel.CRITICAL)
   public void testTwo() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+    open("/", GooglePage.class).searchFor("not-duplicate").someElement().should(visible);
   }
 
   @Test(description = "This Test Is Disabled", enabled = false)
