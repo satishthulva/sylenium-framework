@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Listeners(TestExecutionListener.class)
 public class RandomTests extends TestBaseTemplate {
 
-  @BeforeClass(description = "Test Configuration")
+  @BeforeClass(alwaysRun = true, description = "Test Configuration")
   public void beforeClass() {
     log.info("do something to begin with!");
     final int four = 4 + 4;
@@ -40,17 +40,61 @@ public class RandomTests extends TestBaseTemplate {
   @TmsLink("888")
   @Severity(SeverityLevel.CRITICAL)
   public void testTwo() {
-    open("https://www.google.co.uk", GooglePage.class).searchFor("not-duplicate").someElement().should(visible);
+    open("https://www.google.co.uk", GooglePage.class)
+        .searchFor("not-duplicate")
+        .someElement()
+        .should(visible);
   }
 
   @Test(description = "This Test Is Disabled", enabled = false)
+  @Link(name = "allure", type = "mylink")
+  public void testFour() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "5")
+  @Link(name = "allure", type = "mylink")
+  public void testFive() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "6")
+  @Link(name = "allure", type = "mylink")
+  public void testSix() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "7")
+  @Link(name = "allure", type = "mylink")
+  public void testSeven() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "8")
+  @Link(name = "allure", type = "mylink")
+  public void testEight() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "9")
+  @Link(name = "allure", type = "mylink")
+  public void testNine() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "10")
+  @Link(name = "allure", type = "mylink")
+  public void testTen() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "3")
   @Link(name = "allure", type = "mylink")
   public void testThree() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-
-  @AfterClass(description = "Test Teardown")
+  @AfterClass(alwaysRun = true, description = "Test Teardown")
   public void afterClass() {
     final int five = 5 + 5;
   }
