@@ -1,22 +1,26 @@
 node {
-   def mvnHome
-   stage('FETCH SRC') {
-     git 'https://github.com/symonk/Selenide-TestNG-Allure2-Framework.git'
-   }
-   catchError {
-       stage('Start-Grid') {
-           bat '"gui-tests/run_remote_grid.bat"'
-       }
-   }
-   catchError {
-   stage('Execution') {
-     bat '"gui-tests/regression_jenkins.bat"'
-   }
-   }
-   stage('REPORT') {
-     allure includeProperties: false, jdk: '', results: [[path: 'gui-tests/target/allure-results']]
-    }
-   stage('LOGGING') {
-    archiveArtifacts 'gui-tests/target/test_logs/*.json'
-   }
+ def mvnHome
+ stage('FETCH SRC') {
+  git 'https://github.com/symonk/Selenide-TestNG-Allure2-Framework.git'
  }
+ stage('Start-Grid') {
+  dir("gui-tests") {
+   bat '"run_remote_grid.bat"'
+  }
+ }
+ catchError {
+  stage('Execution') {
+   dir("gui-tests") {
+    bat '"regression_jenkins.bat"'
+   }
+  }
+ }
+ stage('REPORT') {
+  allure includeProperties: false, jdk: '', results: [
+   [path: 'gui-tests/target/allure-results']
+  ]
+ }
+ stage('LOGGING') {
+  archiveArtifacts 'gui-tests/target/test_logs/*.json'
+ }
+}
