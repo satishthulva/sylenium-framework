@@ -23,7 +23,7 @@ public class RandomTests extends TestBaseTemplate {
     final int four = 4 + 4;
   }
 
-  @Test(description = "As a user I want to do something")
+  @Test(description = "Test One!")
   @Story("This is a story")
   @Link(name = "allure", type = "mylink")
   @Issue("123")
@@ -33,7 +33,7 @@ public class RandomTests extends TestBaseTemplate {
     open("/", GooglePage.class).searchFor("simon").someElement().should(visible);
   }
 
-  @Test(description = "Description Two")
+  @Test(description = "Test Two!")
   @Story("Another Story")
   @Link(name = "allure", type = "mylink")
   @Issue("999")
@@ -46,51 +46,57 @@ public class RandomTests extends TestBaseTemplate {
         .should(visible);
   }
 
-  @Test(description = "This Test Is Disabled", enabled = false)
+  @Test(description = "Test Three!")
+  @Link(name = "allure", type = "mylink")
+  public void testThree() {
+    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
+  }
+
+  @Test(description = "Test Four!")
   @Link(name = "allure", type = "mylink")
   public void testFour() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "5")
+  @Test(description = "Test Five!")
   @Link(name = "allure", type = "mylink")
   public void testFive() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "6")
+  @Test(description = "Test Six!")
   @Link(name = "allure", type = "mylink")
   public void testSix() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "7")
+  @Test(description = "Test Seven!")
   @Link(name = "allure", type = "mylink")
   public void testSeven() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "8")
+  @Test(description = "Test Eight!")
   @Link(name = "allure", type = "mylink")
   public void testEight() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "9")
+  @Test(description = "Test Nine!")
   @Link(name = "allure", type = "mylink")
   public void testNine() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "10")
+  @Test(description = "Test Ten!")
   @Link(name = "allure", type = "mylink")
   public void testTen() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
-  @Test(description = "3")
+  @Test(description = "Test Eleven Is Disabled!", enabled = false)
   @Link(name = "allure", type = "mylink")
-  public void testThree() {
+  public void testEleven() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
 
