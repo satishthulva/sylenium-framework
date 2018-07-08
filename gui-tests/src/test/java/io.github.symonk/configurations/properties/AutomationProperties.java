@@ -1,7 +1,7 @@
 package io.github.symonk.configurations.properties;
 
+import io.github.symonk.common.enumerations.SupportedLanguage;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.InvalidArgumentException;
 
 import java.io.IOException;
 import java.util.*;
@@ -21,6 +21,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     private final static String RETRY_ON_FAULURE = "retry.failures";
     private final static String NUMBER_OF_RETRIES = "number.of.retries";
     private final static String USE_PROXY = "tunnel.through.proxy";
+    private final static String LANGUAGE = "language";
     private final static String NOT_SPECIFIED = "not specified";
 
 
@@ -80,9 +81,15 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         return Boolean.parseBoolean(retrieveProperty(USE_PROXY));
     }
 
+    @Override
+    public SupportedLanguage getLanguage() {
+        return SupportedLanguage.valueOf(retrieveProperty(LANGUAGE).toUpperCase());
+    }
+
     private String retrieveProperty(final String key) {
         return Optional.ofNullable(properties.getProperty(key)).orElse(NOT_SPECIFIED);
     }
+
 
     @Override
     public Map<String, String> getPropertiesAsMap() {

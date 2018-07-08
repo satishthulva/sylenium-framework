@@ -1,4 +1,4 @@
-package io.github.symonk.pageobjects;
+package io.github.symonk.pageobjects.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 @Slf4j
 public class GooglePage {
 
-    @FindBy(name = "fail")
+    @FindBy(name = "q")
     private SelenideElement searchBox;
 
     @Step("Searching for a string {0}")

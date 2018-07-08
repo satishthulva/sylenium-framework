@@ -1,5 +1,7 @@
 package io.github.symonk.configurations.properties;
 
+import io.github.symonk.common.enumerations.SupportedLanguage;
+
 import java.util.Map;
 
 public interface ManagesFrameworkProperties {
@@ -25,5 +27,7 @@ public interface ManagesFrameworkProperties {
     boolean tunnelThroughProxy();
 
     Map<String, String> getPropertiesAsMap();
+
+    SupportedLanguage getLanguage();
 
 }

@@ -3,7 +3,7 @@ package io.github.symonk.testcases;
 
 import io.github.symonk.configurations.dependency_injection.FrameworkModule;
 import io.github.symonk.listeners.TestExecutionListener;
-import io.github.symonk.pageobjects.GooglePage;
+import io.github.symonk.pageobjects.pages.GooglePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.*;
@@ -55,6 +55,11 @@ public class GoogleTests extends TestBaseTemplate {
                 .searchFor("jenkins")
                 .someElement()
                 .should(visible);
+    }
+
+    @Test(description = "This Test Is Disabled")
+    public void testFour() {
+        log.info(languageHelper.getResource("foo") + "is really foo?");
     }
 
 

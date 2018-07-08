@@ -1,6 +1,10 @@
 package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Selenide;
+import io.github.symonk.common.helpers.localisation.LanguageHelper;
+import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
+import io.github.symonk.configurations.properties.AutomationProperties;
+import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.configurations.selenide.CustomListener;
 import io.github.symonk.configurations.selenide.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +19,9 @@ public class TestBaseTemplate {
 
     private static final String TEST_NAME = "test";
     private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+
+    private final ManagesFrameworkProperties properties = new AutomationProperties();
+    final ProvidesLanguageValues languageHelper = new LanguageHelper(properties);
 
     @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
     public void initiateLogger(final Method method) {
