@@ -37,9 +37,16 @@
         <guava.version>25.1-jre</guava.version>
         <automation.assistant.version>1.2</automation.assistant.version>
         <jmeter.version>2.7.0</jmeter.version>
+        <browsermob.proxy.version>2.1.5</browsermob.proxy.version>
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/net.lightbody.bmp/browsermob-proxy -->
+        <dependency>
+            <groupId>net.lightbody.bmp</groupId>
+            <artifactId>browsermob-proxy</artifactId>
+            <version>${browsermob.proxy.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>

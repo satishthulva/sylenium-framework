@@ -1,6 +1,7 @@
 package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.github.symonk.common.helpers.localisation.LanguageHelper;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.properties.AutomationProperties;
@@ -8,13 +9,14 @@ import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.configurations.selenide.CustomListener;
 import io.github.symonk.configurations.selenide.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.logging.LogType;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
 import org.slf4j.MDC;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.lang.reflect.Method;
-import java.util.logging.Level;
 
 @Slf4j
 public class TestBaseTemplate {
@@ -25,6 +27,14 @@ public class TestBaseTemplate {
 
   private final ManagesFrameworkProperties properties = new AutomationProperties();
   final ProvidesLanguageValues languageHelper = new LanguageHelper(properties);
+
+  @BeforeMethod(alwaysRun = true, description = "Configure proxy")
+  public void setupProxy() {
+    BrowserMobProxy proxyServer = new BrowserMobProxyServer();
+    proxyServer.start();
+    WebDriverRunner.setProxy(ClientUtil.createSeleniumProxy(proxyServer));
+    proxyServer.getHar();
+  }
 
   @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
   public void initiateLogger(final Method method) {
