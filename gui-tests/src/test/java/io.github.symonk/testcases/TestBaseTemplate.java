@@ -24,7 +24,7 @@ public class TestBaseTemplate {
     }
 
     @AfterMethod(description = "Parse Log File For Test")
-    public void ParseLogFileForTest(final Method method) {
+    public void parseLogFileForTest(final Method method) {
         CustomSelenideLogger.setListenerLogFile(method.getName());
         stopTestLogging();
     }
