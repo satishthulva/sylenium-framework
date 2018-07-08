@@ -49,6 +49,18 @@ public class GoogleTests extends TestBaseTemplate {
                 .should(visible);
     }
 
+    @Test(description = "This Test Is Disabled", enabled = false)
+    public void testThree() {
+        open("/", GooglePage.class)
+                .searchFor("jenkins")
+                .someElement()
+                .should(visible);
+    }
+
+
+
+
+
     @AfterClass(description = "Test Teardown")
     public void afterClass() {
 
