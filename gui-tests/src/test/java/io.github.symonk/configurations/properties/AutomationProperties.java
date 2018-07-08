@@ -17,6 +17,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     private final static String SELENIUM_GRID_ENDPOINT = "selenium.grid.endpoint";
     private final static String WAIT_TIMEOUT = "explicit.wait.timeout";
     private final static String BROWSER_DIMENSIONS = "browser.dimensions";
+    private final static String USE_CUSTOM_DIMENSIONS = "browser.use.custom.dimensions";
     private final static String RETRY_ON_FAULURE = "retry.failures";
     private final static String NUMBER_OF_RETRIES = "number.of.retries";
     private final static String USE_PROXY = "tunnel.through.proxy";
@@ -61,7 +62,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
 
     @Override
     public boolean browserUseCustomDimensions() {
-        return Boolean.parseBoolean(retrieveProperty(BROWSER_DIMENSIONS));
+        return Boolean.parseBoolean(retrieveProperty(USE_CUSTOM_DIMENSIONS));
     }
 
     @Override
