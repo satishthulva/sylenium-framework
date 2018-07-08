@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.InvalidArgumentException;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Properties;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Slf4j
 public class AutomationProperties implements ManagesFrameworkProperties {
@@ -14,7 +12,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     private final static String FRAMEWORK_PROPERTIES_FILE = "framework.properties";
     private final static String NO_PROPERTIES_FILE_FOUND = "Framework properties file could not be found, does it exist?";
     private final static String BASE_URL = "base.url";
-    private final static String BROWSER = "browser";
+    private final static String BROWSER = "selenide.browser";
     private final static String USE_SELENIUM_GRID = "use.selenium.grid";
     private final static String SELENIUM_GRID_ENDPOINT = "selenium.grid.endpoint";
     private final static String WAIT_TIMEOUT = "explicit.wait.timeout";
@@ -22,6 +20,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     private final static String RETRY_ON_FAULURE = "retry.failures";
     private final static String NUMBER_OF_RETRIES = "number.of.retries";
     private final static String USE_PROXY = "tunnel.through.proxy";
+    private final static String NOT_SPECIFIED = "not specified";
 
 
     private final Properties properties = new Properties();
@@ -80,16 +79,22 @@ public class AutomationProperties implements ManagesFrameworkProperties {
         return Boolean.parseBoolean(retrieveProperty(USE_PROXY));
     }
 
-
     private String retrieveProperty(final String key) {
-        return properties.getProperty(key);
+        return Optional.ofNullable(properties.getProperty(key)).orElse(NOT_SPECIFIED);
     }
 
     @Override
     public Map<String, String> getPropertiesAsMap() {
-        return properties.entrySet()
-                .stream()
-                .collect(Collectors.toMap(element -> element.getKey().toString(), element -> element.getValue().toString()));
+        Map<String, String> tempMap = new HashMap<>();
+
+        Enumeration<Object> KeyValues = properties.keys();
+        while (KeyValues.hasMoreElements()) {
+            String key = (String) KeyValues.nextElement();
+            String value = properties.getProperty(key);
+            tempMap.put(key, System.getProperty(key, value));
+        }
+
+        return tempMap;
     }
 
     private void initializeProperties() {

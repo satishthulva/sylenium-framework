@@ -7,7 +7,7 @@
         </discriminator>
         <sift>
             <appender name="FILE-${testname}" class="ch.qos.logback.core.rolling.RollingFileAppender">
-                <File>target\\test_logs\\${test_name}-${time}.json</File>
+                <File>target\\test_logs\\${test}-${time}.json</File>
                 <encoder class="net.logstash.logback.encoder.LogstashEncoder">
                     <timestampPattern>yyyy-MM-dd'_'HH-mm-ss.SSS</timestampPattern>
                     <version>Selenide-TestNG-Framework</version>
