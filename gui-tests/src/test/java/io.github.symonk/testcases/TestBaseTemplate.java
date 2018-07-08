@@ -8,11 +8,13 @@ import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.configurations.selenide.CustomListener;
 import io.github.symonk.configurations.selenide.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.logging.LogType;
 import org.slf4j.MDC;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.lang.reflect.Method;
+import java.util.logging.Level;
 
 @Slf4j
 public class TestBaseTemplate {

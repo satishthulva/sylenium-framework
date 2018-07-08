@@ -2,11 +2,13 @@ package io.github.symonk.testcases;
 
 import io.github.symonk.pageobjects.pages.GooglePage;
 import io.qameta.allure.*;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
+@Slf4j
 public class RetryTests extends TestBaseTemplate {
 
   @Test(description = "Retried!", invocationCount = 1)
@@ -16,6 +18,6 @@ public class RetryTests extends TestBaseTemplate {
   @TmsLink("456")
   @Severity(SeverityLevel.CRITICAL)
   public void retriedOnFailure() {
-    open("/", GooglePage.class).searchFor("simon").someElement().shouldNot(visible);
+    open("/", GooglePage.class).searchFor("simon").someElement().should(visible);
   }
 }
