@@ -13,8 +13,9 @@ public class TestExecutionListener implements IExecutionListener {
     @Override
     public void onExecutionStart() {
         log.info("test started!");
-        pushReportInformation();
         configureTestRun();
+        pushReportInformation();
+
     }
 
     @Override

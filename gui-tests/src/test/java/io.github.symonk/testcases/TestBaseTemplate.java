@@ -13,30 +13,30 @@ import java.lang.reflect.Method;
 @Slf4j
 public class TestBaseTemplate {
 
-    private static final String TEST_NAME = "test_name";
+    private static final String TEST_NAME = "test";
     private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
 
-    @BeforeMethod(alwaysRun = true, description = "Setup logger for test")
+    @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
     public void initiateLogger(final Method method) {
         startTestLogging(method.getName());
         log.info("Executing: + " + method.getName());
         CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
     }
 
-    @AfterMethod(description = "Unload the test threads logger")
-    public void finalizeLogger(final Method method) {
-        stopTestLogging();
+    @AfterMethod(description = "Parse Log File For Test")
+    public void ParseLogFileForTest(final Method method) {
         CustomSelenideLogger.setListenerLogFile(method.getName());
+        stopTestLogging();
     }
 
-    @AfterMethod(description = "Prevent browser session leakage")
+    @AfterMethod(description = "Clear Browser Session")
     public void preventBrowserSessionLeakage() {
         Selenide.clearBrowserLocalStorage();
         Selenide.clearBrowserCookies();
         Selenide.close();
     }
 
-    @AfterMethod(description = "Unregister test listeners")
+    @AfterMethod(description = "Close Selenide Listener")
     public void unregisterTestListeners() {
         CustomSelenideLogger.removeAllListeners();
     }

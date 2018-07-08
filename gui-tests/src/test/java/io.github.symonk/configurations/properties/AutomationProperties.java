@@ -12,7 +12,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
 
     public AutomationProperties() {
         try {
-            properties.load(this.getClass().getClassLoader().getResourceAsStream("framework.properties"));
+            properties.load(getClass().getClassLoader().getResourceAsStream("framework.properties"));
         } catch (IOException ex) {
             log.error("unable to find the framework properties file");
         }
