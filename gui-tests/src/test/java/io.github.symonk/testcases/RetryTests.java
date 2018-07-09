@@ -1,12 +1,10 @@
 package io.github.symonk.testcases;
 
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
-import io.github.symonk.configurations.dependency_injection.FrameworkModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.pageobjects.pages.GooglePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;

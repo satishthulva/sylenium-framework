@@ -2,7 +2,7 @@ package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Configuration;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
-import io.github.symonk.configurations.dependency_injection.FrameworkModule;
+import io.github.symonk.configurations.guice.PropertiesModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.GooglePage;
@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Slf4j
 @Epic("This is an Epic")
 @Feature("This is a Feature")
-@Guice(modules = FrameworkModule.class)
+@Guice(modules = PropertiesModule.class)
 @Listeners(TestExecutionListener.class)
 public class RandomTests extends TestBaseTemplate {
 

@@ -2,10 +2,8 @@ package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import io.github.symonk.common.helpers.localisation.LanguageHelper;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
-import io.github.symonk.configurations.dependency_injection.FrameworkModule;
-import io.github.symonk.configurations.properties.AutomationProperties;
+import io.github.symonk.configurations.guice.PropertiesModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.configurations.selenide.CustomListener;
 import io.github.symonk.configurations.selenide.CustomSelenideLogger;
@@ -20,7 +18,7 @@ import javax.inject.Inject;
 import java.lang.reflect.Method;
 
 @Slf4j
-@Guice(modules = FrameworkModule.class)
+@Guice(modules = PropertiesModule.class)
 public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";

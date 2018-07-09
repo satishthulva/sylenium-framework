@@ -1,4 +1,4 @@
-package io.github.symonk.configurations.dependency_injection;
+package io.github.symonk.configurations.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Slf4j
-public class FrameworkModule extends AbstractModule {
+public class PropertiesModule extends AbstractModule {
 
   @Override
   protected void configure() {
