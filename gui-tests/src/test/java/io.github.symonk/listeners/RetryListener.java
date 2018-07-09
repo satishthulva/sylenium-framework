@@ -7,14 +7,14 @@ import org.testng.ITestResult;
 @Slf4j
 public class RetryListener implements IRetryAnalyzer {
 
+  private static final int MAXIMUM_ATTEMPTS = 1;
   private int attempts = 0;
-  private static final int maximumAttempts = 1;
 
   @Override
   public boolean retry(final ITestResult iTestResult) {
     boolean result = false;
     if (!iTestResult.isSuccess()) {
-      if (attempts < maximumAttempts) {
+      if (attempts < MAXIMUM_ATTEMPTS) {
         attempts++;
         iTestResult.setStatus(ITestResult.FAILURE);
         result = true;

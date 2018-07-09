@@ -11,10 +11,11 @@ import static com.codeborne.selenide.Selenide.$;
 @Slf4j
 public class GooglePage {
 
-  @Step("Searching for a string {0}")
+  private static final SelenideElement searchBox = $(By.name("q"));
+
+  @Step("Searching for the term: {0}")
   public GooglePage searchFor(final String term) {
-    log.info("Searching for a term");
-    $(By.name("q")).val(term).pressEnter();
+    searchBox.val(term).pressEnter();
     return this;
   }
 
@@ -25,6 +26,6 @@ public class GooglePage {
 
   @Step("Returning some random element")
   public SelenideElement someElement() {
-    return $(By.name("q"));
+    return searchBox;
   }
 }

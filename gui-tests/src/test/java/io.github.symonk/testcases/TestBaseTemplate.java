@@ -14,7 +14,9 @@ import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import org.slf4j.MDC;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
 
@@ -22,18 +24,18 @@ import java.lang.reflect.Method;
 public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
-  private static final CustomListener listener =
-      new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+  private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+  private final BrowserMobProxy proxyServer = new BrowserMobProxyServer();
 
   private final ManagesFrameworkProperties properties = new AutomationProperties();
   final ProvidesLanguageValues languageHelper = new LanguageHelper(properties);
 
-  @BeforeMethod(alwaysRun = true, description = "Configure proxy")
+  @BeforeSuite(alwaysRun = true, description = "Configure proxy")
   public void setupProxy() {
-    BrowserMobProxy proxyServer = new BrowserMobProxyServer();
-    proxyServer.start();
-    WebDriverRunner.setProxy(ClientUtil.createSeleniumProxy(proxyServer));
-    proxyServer.getHar();
+    if (properties.tunnelThroughProxy()) {
+      proxyServer.start();
+      WebDriverRunner.setProxy(ClientUtil.createSeleniumProxy(proxyServer));
+    }
   }
 
   @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
@@ -43,10 +45,21 @@ public class TestBaseTemplate {
     CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
   }
 
+  private void startTestLogging(String name) {
+    log.info("Multi threaded logger initialized for test: " + name);
+    MDC.put(TEST_NAME, name);
+  }
+
   @AfterMethod(alwaysRun = true, description = "[Report] Parse Log File For Test")
   public void parseLogFileForTest(final Method method) {
     CustomSelenideLogger.setListenerLogFile(method.getName());
     stopTestLogging();
+  }
+
+  private String stopTestLogging() {
+    String name = MDC.get(TEST_NAME);
+    MDC.remove(TEST_NAME);
+    return name;
   }
 
   @AfterMethod(alwaysRun = true, description = "Clear Browser Session")
@@ -61,14 +74,11 @@ public class TestBaseTemplate {
     CustomSelenideLogger.removeAllListeners();
   }
 
-  private void startTestLogging(String name) {
-    log.info("Multi threaded logger initialized for test: " + name);
-    MDC.put(TEST_NAME, name);
-  }
-
-  private String stopTestLogging() {
-    String name = MDC.get(TEST_NAME);
-    MDC.remove(TEST_NAME);
-    return name;
+  @AfterSuite(alwaysRun = true, description = "collect .har data")
+  public void correlateHarData() {
+    if (properties.tunnelThroughProxy()) {
+      proxyServer.getHar();
+      proxyServer.stop();
+    }
   }
 }

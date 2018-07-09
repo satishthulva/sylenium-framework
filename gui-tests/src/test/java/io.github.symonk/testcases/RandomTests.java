@@ -25,7 +25,6 @@ public class RandomTests extends TestBaseTemplate {
     Configuration.browser = browser;
   }
 
-
   @Test(description = "Test One!", invocationCount = 1)
   @Story("This is a story")
   @Link(name = "allure", type = "mylink")

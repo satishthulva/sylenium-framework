@@ -34,28 +34,6 @@ public class CustomListener implements LogEventListener {
     this.lifecycle = Allure.getLifecycle();
   }
 
-  private static byte[] getLogFileBytes(final String testName) throws IOException {
-    File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
-    log.info("Adding log file: " + files[0].getPath());
-    return Files.readAllBytes(Paths.get(files[0].getAbsolutePath()));
-  }
-
-  private static byte[] getScreenshotBytes() {
-    return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-  }
-
-  private static byte[] getPageSourceBytes() {
-    return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
-  }
-
-  private static File[] listFilesMatching(File root, String regex) {
-    if (!root.isDirectory()) {
-      throw new IllegalArgumentException(root + " is not a directory.");
-    }
-    final Pattern p = Pattern.compile(regex);
-    return root.listFiles(file -> p.matcher(file.getName()).matches());
-  }
-
   public CustomListener withScreenshot(final boolean withScreenshot) {
     this.withScreenshot = withScreenshot;
     return this;
@@ -118,5 +96,27 @@ public class CustomListener implements LogEventListener {
               }
               lifecycle.stopStep(stepUUID);
             });
+  }
+
+  private static byte[] getScreenshotBytes() {
+    return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+  }
+
+  private static byte[] getPageSourceBytes() {
+    return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
+  }
+
+  private static byte[] getLogFileBytes(final String testName) throws IOException {
+    File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
+    log.info("Adding log file: " + files[0].getPath());
+    return Files.readAllBytes(Paths.get(files[0].getAbsolutePath()));
+  }
+
+  private static File[] listFilesMatching(File root, String regex) {
+    if (!root.isDirectory()) {
+      throw new IllegalArgumentException(root + " is not a directory.");
+    }
+    final Pattern p = Pattern.compile(regex);
+    return root.listFiles(file -> p.matcher(file.getName()).matches());
   }
 }

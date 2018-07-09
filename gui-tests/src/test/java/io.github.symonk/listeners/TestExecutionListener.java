@@ -25,10 +25,6 @@ public class TestExecutionListener implements IExecutionListener {
     log.info("test run finished!");
   }
 
-  private void pushReportInformation() {
-    this.reportHelper.pushDynamicTestRunPropertiesToReport();
-  }
-
   private void configureTestRun() {
     if (automationProperties.shouldRunDistributed())
       Configuration.remote = automationProperties.getGridEndpoint();
@@ -37,5 +33,9 @@ public class TestExecutionListener implements IExecutionListener {
 
     Configuration.baseUrl = automationProperties.getBaseUrl();
     Configuration.timeout = automationProperties.getWaitTimeout();
+  }
+
+  private void pushReportInformation() {
+    this.reportHelper.pushDynamicTestRunPropertiesToReport();
   }
 }

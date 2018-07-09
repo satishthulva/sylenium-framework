@@ -10,8 +10,7 @@ import java.util.*;
 public class AutomationProperties implements ManagesFrameworkProperties {
 
   private static final String FRAMEWORK_PROPERTIES_FILE = "framework.properties";
-  private static final String NO_PROPERTIES_FILE_FOUND =
-      "Framework properties file could not be found, does it exist?";
+  private static final String NO_PROPERTIES_FILE_FOUND = "Framework properties file could not be found, does it exist?";
   private static final String BASE_URL = "base.url";
   private static final String BROWSER = "selenide.browser";
   private static final String USE_SELENIUM_GRID = "use.selenium.grid";
@@ -29,6 +28,14 @@ public class AutomationProperties implements ManagesFrameworkProperties {
 
   public AutomationProperties() {
     initializeProperties();
+  }
+
+  private void initializeProperties() {
+    try {
+      properties.load(getClass().getClassLoader().getResourceAsStream(FRAMEWORK_PROPERTIES_FILE));
+    } catch (IOException ex) {
+      throw new IllegalArgumentException(NO_PROPERTIES_FILE_FOUND);
+    }
   }
 
   @Override
@@ -82,21 +89,12 @@ public class AutomationProperties implements ManagesFrameworkProperties {
   }
 
   @Override
-  public SupportedLanguage getLanguage() {
-    return SupportedLanguage.valueOf(retrieveProperty(LANGUAGE).toUpperCase());
-  }
-
-  private String retrieveProperty(final String key) {
-    return Optional.ofNullable(properties.getProperty(key)).orElse(NOT_SPECIFIED);
-  }
-
-  @Override
   public Map<String, String> getPropertiesAsMap() {
     Map<String, String> tempMap = new HashMap<>();
 
-    Enumeration<Object> KeyValues = properties.keys();
-    while (KeyValues.hasMoreElements()) {
-      String key = (String) KeyValues.nextElement();
+    Enumeration<Object> keyValues = properties.keys();
+    while (keyValues.hasMoreElements()) {
+      String key = (String) keyValues.nextElement();
       String value = properties.getProperty(key);
       tempMap.put(key, System.getProperty(key, value));
     }
@@ -104,11 +102,12 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     return tempMap;
   }
 
-  private void initializeProperties() {
-    try {
-      properties.load(getClass().getClassLoader().getResourceAsStream(FRAMEWORK_PROPERTIES_FILE));
-    } catch (IOException ex) {
-      throw new IllegalArgumentException(NO_PROPERTIES_FILE_FOUND);
-    }
+  @Override
+  public SupportedLanguage getLanguage() {
+    return SupportedLanguage.valueOf(retrieveProperty(LANGUAGE).toUpperCase());
+  }
+
+  private String retrieveProperty(final String key) {
+    return Optional.ofNullable(properties.getProperty(key)).orElse(NOT_SPECIFIED);
   }
 }
