@@ -1,12 +1,16 @@
 package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Configuration;
+import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.dependency_injection.FrameworkModule;
+import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.GooglePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.*;
+
+import javax.inject.Inject;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -17,6 +21,11 @@ import static com.codeborne.selenide.Selenide.open;
 @Guice(modules = FrameworkModule.class)
 @Listeners(TestExecutionListener.class)
 public class RandomTests extends TestBaseTemplate {
+
+  @Inject
+  public RandomTests(ManagesFrameworkProperties properties, ProvidesLanguageValues languageHelper) {
+    super(properties, languageHelper);
+  }
 
   @Parameters({"browser"})
   @BeforeClass(alwaysRun = true, description = "Test Configuration")

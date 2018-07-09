@@ -1,7 +1,12 @@
 package io.github.symonk.configurations.dependency_injection;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import io.github.symonk.common.helpers.localisation.LanguageHelper;
+import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
+import io.github.symonk.configurations.properties.AutomationProperties;
+import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -12,7 +17,8 @@ public class FrameworkModule extends AbstractModule {
 
   @Override
   protected void configure() {
-    prepareAutomationProperties();
+    bind(ManagesFrameworkProperties.class).to(AutomationProperties.class).in(Singleton.class);
+    bind(ProvidesLanguageValues.class).to(LanguageHelper.class).in(Singleton.class);
   }
 
   private void prepareAutomationProperties() {

@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.github.symonk.common.helpers.localisation.LanguageHelper;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
+import io.github.symonk.configurations.dependency_injection.FrameworkModule;
 import io.github.symonk.configurations.properties.AutomationProperties;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
 import io.github.symonk.configurations.selenide.CustomListener;
@@ -13,22 +14,28 @@ import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import org.slf4j.MDC;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
+import javax.inject.Inject;
 import java.lang.reflect.Method;
 
 @Slf4j
+@Guice(modules = FrameworkModule.class)
 public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
   private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
   private final BrowserMobProxy proxyServer = new BrowserMobProxyServer();
 
-  private final ManagesFrameworkProperties properties = new AutomationProperties();
-  final ProvidesLanguageValues languageHelper = new LanguageHelper(properties);
+  private final ManagesFrameworkProperties properties;
+  protected final ProvidesLanguageValues languageHelper;
+
+  @Inject
+  public TestBaseTemplate(final ManagesFrameworkProperties properties, final ProvidesLanguageValues languageHelper) {
+    this.properties = properties;
+    this.languageHelper = languageHelper;
+  }
+
 
   @BeforeSuite(alwaysRun = true, description = "Configure proxy")
   public void setupProxy() {
