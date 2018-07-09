@@ -20,14 +20,4 @@ public class PropertiesModule extends AbstractModule {
     bind(ManagesFrameworkProperties.class).to(AutomationProperties.class).in(Singleton.class);
     bind(ProvidesLanguageValues.class).to(LanguageHelper.class).in(Singleton.class);
   }
-
-  private void prepareAutomationProperties() {
-    Properties properties = new Properties();
-    try {
-      properties.load(getClass().getClassLoader().getResourceAsStream("framework.properties"));
-      Names.bindProperties(binder(), properties);
-    } catch (IOException e) {
-      log.error("unable to find/load the config for test automation properties");
-    }
-  }
 }

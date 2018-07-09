@@ -1,4 +1,4 @@
-package io.github.symonk.configurations.selenide;
+package io.github.symonk.selenide.custom_listeners;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import lombok.extern.slf4j.Slf4j;

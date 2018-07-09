@@ -8,11 +8,13 @@ import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.GooglePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.testng.annotations.*;
 
 import javax.inject.Inject;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
@@ -110,6 +112,7 @@ public class RandomTests extends TestBaseTemplate {
   public void testEleven() {
     open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
   }
+
 
   @AfterClass(alwaysRun = true, description = "Test Teardown")
   public void afterClass() {}

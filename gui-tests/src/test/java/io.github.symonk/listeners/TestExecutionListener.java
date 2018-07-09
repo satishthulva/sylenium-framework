@@ -26,10 +26,13 @@ public class TestExecutionListener implements IExecutionListener {
   }
 
   private void configureTestRun() {
-    if (automationProperties.shouldRunDistributed())
+    if (automationProperties.shouldRunDistributed()) {
       Configuration.remote = automationProperties.getGridEndpoint();
-    if (automationProperties.browserUseCustomDimensions())
+    }
+    if (automationProperties.browserUseCustomDimensions()) {
+      Configuration.startMaximized = false;
       Configuration.browserSize = automationProperties.getBrowserDimensions();
+    }
 
     Configuration.baseUrl = automationProperties.getBaseUrl();
     Configuration.timeout = automationProperties.getWaitTimeout();
