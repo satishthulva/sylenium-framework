@@ -22,4 +22,8 @@ public class OrderProvider {
       final OrderOptions... options) {
     return new PuppyOrder.PuppyOrderBuilder(name, address, email, dog).addOptions(options).build();
   }
+
+  public PuppyOrder getRandomOrder() {
+    return new PuppyOrder.PuppyOrderBuilder("random", "random-add", "rand@om.com", Puppy.HANNA).build();
+  }
 }
