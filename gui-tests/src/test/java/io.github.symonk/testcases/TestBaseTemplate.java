@@ -53,7 +53,7 @@ public class TestBaseTemplate {
   }
 
 
-  @AfterMethod(alwaysRun = true, description = "[Report] Parse Log File For Test")
+  @AfterMethod(alwaysRun = true, description = "[Parse Test Logs]")
   public void parseLogFileForTest(final Method method) {
     CustomSelenideLogger.setListenerLogFile(method.getName());
     stopTestLogging();

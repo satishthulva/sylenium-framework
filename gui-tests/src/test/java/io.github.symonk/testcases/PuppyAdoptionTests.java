@@ -82,7 +82,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
 
 
 
-  @AfterClass(alwaysRun = true, description = "Test Teardown")
+  @AfterClass(alwaysRun = true, description = "[Test Teardown]")
   public void afterClass() {
 
   }

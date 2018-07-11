@@ -2,6 +2,7 @@ package io.github.symonk.pageobjects.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.github.symonk.domain.PuppyOrder;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -15,6 +16,7 @@ public class PuppyOrderDetailsPage {
   private static final SelenideElement ORDER_PAYMENT_TYPE = $(By.id("order_pay_type"));
 
 
+  @Step("Completing the order details")
   public PuppyAdoptionHomePage fillInOrderDetails(final PuppyOrder order) {
     ORDER_NAME_TEXTBOX.val(order.getAdopterName());
     ORDER_ADDRESS_TEXTBOX.val(order.getAdopterAddress());

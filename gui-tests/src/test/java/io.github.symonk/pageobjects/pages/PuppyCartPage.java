@@ -3,6 +3,7 @@ package io.github.symonk.pageobjects.pages;
 import com.codeborne.selenide.SelenideElement;
 import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.domain.PuppyOrder;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -17,16 +18,19 @@ public class PuppyCartPage {
     private static final SelenideElement VET_CHECKBOX = $(By.id("vet"));
     private static final SelenideElement TOTAL_PRICE = $(By.xpath("//td[@class='total_cell']/h2"));
 
+    @Step("Continuing with options without providing any options")
     public PuppyOrderDetailsPage completeTheAdoption() {
         return completeAdoption();
     }
 
+    @Step("Checking total price for all options is correct")
     public PuppyCartPage orderPriceForAllItemsIsCorrect(final String cost, final PuppyOrder order) {
         selectAppropriateOptions(order);
         TOTAL_PRICE.shouldHave(exactText(cost));
         return this;
     }
 
+    @Step("Populating the adoption options")
     public PuppyOrderDetailsPage completeTheAdoption(final PuppyOrder puppyOrder) {
         selectAppropriateOptions(puppyOrder);
         return completeTheAdoption();
