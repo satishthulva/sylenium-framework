@@ -1,17 +1,16 @@
 package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.PropertiesModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
+import io.github.symonk.listeners.WebEventListener;
 import io.github.symonk.selenide.custom_listeners.CustomListener;
 import io.github.symonk.selenide.custom_listeners.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Guice;
+import org.testng.annotations.*;
 
 import javax.inject.Inject;
 import java.lang.reflect.Method;
@@ -27,28 +26,52 @@ public class TestBaseTemplate {
   private final ManagesFrameworkProperties properties;
   protected final ProvidesLanguageValues languageHelper;
 
+
   @Inject
   public TestBaseTemplate(final ManagesFrameworkProperties properties, final ProvidesLanguageValues languageHelper) {
     this.properties = properties;
     this.languageHelper = languageHelper;
   }
 
-  @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
+  @BeforeSuite(alwaysRun = true, description = "[Register Driver Event Listener]")
+  public void registerDriverEventListener() {
+    WebDriverRunner.addListener(new WebEventListener());
+  }
+
+  @BeforeMethod(alwaysRun = true, description = "[Initialize Test Logger]")
   public void initiateLogger(final Method method) {
     startTestLogging(method.getName());
     log.info("Executing: + " + method.getName());
+  }
+
+  @BeforeMethod(alwaysRun = true, description = "[Registering Custom Selenide Listener]")
+  public void registerCustomSelenideListener(final Method method) {
     CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
   }
 
-  private void startTestLogging(final String name) {
-    log.info("Multi threaded logger initialized for test: " + name);
-    MDC.put(TEST_NAME, name);
-  }
 
   @AfterMethod(alwaysRun = true, description = "[Report] Parse Log File For Test")
   public void parseLogFileForTest(final Method method) {
     CustomSelenideLogger.setListenerLogFile(method.getName());
     stopTestLogging();
+  }
+
+
+  @AfterMethod(alwaysRun = true, description = "[Clear Browser Session Data]")
+  public void preventBrowserSessionLeakage() {
+    Selenide.clearBrowserLocalStorage();
+    Selenide.clearBrowserCookies();
+    Selenide.close();
+  }
+
+  @AfterMethod(alwaysRun = true, description = "[Unregister Custom Selenide Listener]")
+  public void unregisterTestListeners() {
+    CustomSelenideLogger.removeAllListeners();
+  }
+
+  private void startTestLogging(final String name) {
+    log.info("Multi threaded logger initialized for test: " + name);
+    MDC.put(TEST_NAME, name);
   }
 
   private String stopTestLogging() {
@@ -57,20 +80,4 @@ public class TestBaseTemplate {
     return name;
   }
 
-  @AfterMethod(alwaysRun = true, description = "Clear Browser Session")
-  public void preventBrowserSessionLeakage() {
-    Selenide.clearBrowserLocalStorage();
-    Selenide.clearBrowserCookies();
-    Selenide.close();
-  }
-
-  @AfterMethod(alwaysRun = true, description = "Close Selenide Listener")
-  public void unregisterTestListeners() {
-    CustomSelenideLogger.removeAllListeners();
-  }
-
-  @AfterSuite(alwaysRun = true, description = "collect .har data")
-  public void correlateHarData() {
-
-  }
 }

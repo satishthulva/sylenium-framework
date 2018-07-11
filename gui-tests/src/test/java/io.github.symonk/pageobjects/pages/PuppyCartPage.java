@@ -5,6 +5,7 @@ import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.domain.PuppyOrder;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -23,7 +24,7 @@ public class PuppyCartPage {
 
     public PuppyCartPage orderPriceForAllItemsIsCorrect(final String cost, final PuppyOrder order) {
         selectAppropriateOptions(order);
-        TOTAL_PRICE.shouldHave(text(cost));
+        TOTAL_PRICE.shouldHave(exactText(cost));
         return this;
     }
 
