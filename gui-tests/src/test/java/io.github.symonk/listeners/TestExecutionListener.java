@@ -26,6 +26,7 @@ public class TestExecutionListener implements IExecutionListener {
   }
 
   private void configureTestRun() {
+    Configuration.browser = automationProperties.getBrowser();
     if (automationProperties.shouldRunDistributed()) {
       Configuration.remote = automationProperties.getGridEndpoint();
     }

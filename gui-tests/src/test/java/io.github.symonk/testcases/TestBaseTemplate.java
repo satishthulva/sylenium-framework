@@ -1,19 +1,17 @@
 package io.github.symonk.testcases;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.PropertiesModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
-import io.github.symonk.listeners.WebEventListener;
 import io.github.symonk.selenide.custom_listeners.CustomListener;
 import io.github.symonk.selenide.custom_listeners.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
-import net.lightbody.bmp.BrowserMobProxy;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.proxy.CaptureType;
 import org.slf4j.MDC;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Guice;
 
 import javax.inject.Inject;
 import java.lang.reflect.Method;
@@ -24,7 +22,6 @@ public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
   private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
-  private static final BrowserMobProxy proxy = new BrowserMobProxyServer();
 
 
   private final ManagesFrameworkProperties properties;
@@ -34,16 +31,6 @@ public class TestBaseTemplate {
   public TestBaseTemplate(final ManagesFrameworkProperties properties, final ProvidesLanguageValues languageHelper) {
     this.properties = properties;
     this.languageHelper = languageHelper;
-  }
-
-  @BeforeSuite(alwaysRun = true, description = "Configure proxy")
-  public void setupProxy() {
-    WebDriverRunner.addListener(new WebEventListener());
-    if(properties.tunnelThroughProxy()) {
-      proxy.start();
-      proxy.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
-      proxy.newHar("example-har");
-    }
   }
 
   @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
