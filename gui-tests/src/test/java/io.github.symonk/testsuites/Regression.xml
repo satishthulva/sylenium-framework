@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Full Regression" verbose="2" parallel="methods">
+<suite name="Full Regression" verbose="2">
     <listeners>
         <listener class-name="io.github.symonk.listeners.TestExecutionListener"/>
         <listener class-name="io.github.symonk.listeners.AnnotationTransformationListener"/>

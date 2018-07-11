@@ -36,7 +36,7 @@ public class TestBaseTemplate {
     this.languageHelper = languageHelper;
   }
 
-  @BeforeSuite(alwaysRun = true, description = "[Register Driver Event Listener]")
+  @BeforeMethod(alwaysRun = true, description = "[Register Driver Event Listener]")
   public void registerDriverEventListener() {
     WebDriverRunner.addListener(new WebEventListener());
   }
