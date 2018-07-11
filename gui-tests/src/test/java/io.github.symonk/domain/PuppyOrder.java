@@ -15,10 +15,10 @@ import java.util.List;
 @Data
 public class PuppyOrder {
 
-  private final String adopterName; // required
-  private final String adopterAddress; // required
-  private final String adopterEmail; // required
-  private final Puppy dog; // required
+  private final String adopterName;
+  private final String adopterAddress;
+  private final String adopterEmail;
+  private final Puppy dog;
   private final List<OrderOptions> listOfOrderItems;
 
   private PuppyOrder(PuppyOrderBuilder builder) {
@@ -30,10 +30,10 @@ public class PuppyOrder {
   }
 
   public static class PuppyOrderBuilder {
-    private final String adopterName; // required
-    private final String adopterAddress; // required
-    private final String adopterEmail; // required
-    private final Puppy dog; // required
+    private final String adopterName;
+    private final String adopterAddress;
+    private final String adopterEmail;
+    private final Puppy dog;
     private final List<OrderOptions> listOfOrderItems = new ArrayList<>();
 
     public PuppyOrderBuilder(
