@@ -25,13 +25,13 @@ import static com.codeborne.selenide.Selenide.open;
 public class RandomTests extends TestBaseTemplate {
 
   @Inject
-  public RandomTests(ManagesFrameworkProperties properties, ProvidesLanguageValues languageHelper) {
+  public RandomTests(final ManagesFrameworkProperties properties, final ProvidesLanguageValues languageHelper) {
     super(properties, languageHelper);
   }
 
   @Parameters({"browser"})
   @BeforeClass(alwaysRun = true, description = "Test Configuration")
-  public void beforeClass(String browser) {
+  public void beforeClass(final String browser) {
     log.info("do something to begin with!");
     Configuration.browser = browser;
   }

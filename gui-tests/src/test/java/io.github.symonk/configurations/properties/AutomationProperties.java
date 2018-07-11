@@ -33,7 +33,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
   private void initializeProperties() {
     try {
       properties.load(getClass().getClassLoader().getResourceAsStream(FRAMEWORK_PROPERTIES_FILE));
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       throw new IllegalArgumentException(NO_PROPERTIES_FILE_FOUND);
     }
   }
@@ -90,12 +90,12 @@ public class AutomationProperties implements ManagesFrameworkProperties {
 
   @Override
   public Map<String, String> getPropertiesAsMap() {
-    Map<String, String> tempMap = new HashMap<>();
+    final Map<String, String> tempMap = new HashMap<>();
 
-    Enumeration<Object> keyValues = properties.keys();
+    final Enumeration<Object> keyValues = properties.keys();
     while (keyValues.hasMoreElements()) {
-      String key = (String) keyValues.nextElement();
-      String value = properties.getProperty(key);
+      final String key = (String) keyValues.nextElement();
+      final String value = properties.getProperty(key);
       tempMap.put(key, System.getProperty(key, value));
     }
 

@@ -44,7 +44,7 @@ public class TestBaseTemplate {
     CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
   }
 
-  private void startTestLogging(String name) {
+  private void startTestLogging(final String name) {
     log.info("Multi threaded logger initialized for test: " + name);
     MDC.put(TEST_NAME, name);
   }
@@ -56,7 +56,7 @@ public class TestBaseTemplate {
   }
 
   private String stopTestLogging() {
-    String name = MDC.get(TEST_NAME);
+    final String name = MDC.get(TEST_NAME);
     MDC.remove(TEST_NAME);
     return name;
   }

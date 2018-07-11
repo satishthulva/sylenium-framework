@@ -107,12 +107,12 @@ public class CustomListener implements LogEventListener {
   }
 
   private static byte[] getLogFileBytes(final String testName) throws IOException {
-    File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
+    final File[] files = listFilesMatching(new File("target/test_logs/"), testName + "-.*\\.json");
     log.info("Adding log file: " + files[0].getPath());
     return Files.readAllBytes(Paths.get(files[0].getAbsolutePath()));
   }
 
-  private static File[] listFilesMatching(File root, String regex) {
+  private static File[] listFilesMatching(final File root, final String regex) {
     if (!root.isDirectory()) {
       throw new IllegalArgumentException(root + " is not a directory.");
     }

@@ -41,9 +41,9 @@ public class ReportHelper implements ReportInteractable {
     final Properties environmentProperties = new Properties();
     properties.getPropertiesAsMap().forEach(environmentProperties::setProperty);
 
-    FileOutputStream fos;
+    final FileOutputStream fos;
     try {
-      Path pathToFile = Paths.get(DEFAULT_DIRECTORY);
+      final Path pathToFile = Paths.get(DEFAULT_DIRECTORY);
       if (!removeFileIfExists(pathToFile)) {
         Files.createDirectories(pathToFile.getParent());
       }
@@ -51,19 +51,19 @@ public class ReportHelper implements ReportInteractable {
       fos = new FileOutputStream(pathToFile.toString());
       environmentProperties.store(fos, PROPERTIES_HEADER);
       fos.close();
-    } catch (IOException exception) {
+    } catch (final IOException exception) {
       abortTheTestRun(IO_EXCEPTION);
     }
   }
 
-  private boolean removeFileIfExists(Path filePath) {
+  private boolean removeFileIfExists(final Path filePath) {
     try {
       if (Files.exists(filePath)) {
         log.info(FILE_EXISTS);
         Files.delete(filePath);
         return true;
       }
-    } catch (IOException exception) {
+    } catch (final IOException exception) {
       log.error(DUPLICATE_FILE_ERROR, exception);
     }
     return false;
