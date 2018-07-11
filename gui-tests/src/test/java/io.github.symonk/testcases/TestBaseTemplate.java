@@ -9,6 +9,9 @@ import io.github.symonk.listeners.WebEventListener;
 import io.github.symonk.selenide.custom_listeners.CustomListener;
 import io.github.symonk.selenide.custom_listeners.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.slf4j.MDC;
 import org.testng.annotations.*;
 
@@ -21,6 +24,7 @@ public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
   private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+  private static final BrowserMobProxy proxy = new BrowserMobProxyServer();
 
 
   private final ManagesFrameworkProperties properties;
@@ -35,6 +39,11 @@ public class TestBaseTemplate {
   @BeforeSuite(alwaysRun = true, description = "Configure proxy")
   public void setupProxy() {
     WebDriverRunner.addListener(new WebEventListener());
+    if(properties.tunnelThroughProxy()) {
+      proxy.start();
+      proxy.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
+      proxy.newHar("example-har");
+    }
   }
 
   @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")

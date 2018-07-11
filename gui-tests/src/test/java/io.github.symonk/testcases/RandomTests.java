@@ -79,39 +79,6 @@ public class RandomTests extends TestBaseTemplate {
 
   @Test(description = "Test Six!", invocationCount = 1)
   @Link(name = "allure", type = "mylink")
-  public void testSix() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
-  }
-
-  @Test(description = "Test Seven!", invocationCount = 1)
-  @Link(name = "allure", type = "mylink")
-  public void testSeven() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
-  }
-
-  @Test(description = "Test Eight!", invocationCount = 1)
-  @Link(name = "allure", type = "mylink")
-  public void testEight() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
-  }
-
-  @Test(description = "Test Nine!", invocationCount = 1)
-  @Link(name = "allure", type = "mylink")
-  public void testNine() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
-  }
-
-  @Test(description = "Test Ten!", invocationCount = 1)
-  @Link(name = "allure", type = "mylink")
-  public void testTen() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
-  }
-
-  @Test(description = "Test Eleven Is Disabled!", enabled = false)
-  @Link(name = "allure", type = "mylink")
-  public void testEleven() {
-    open("/", GooglePage.class).searchFor("jenkins").someElement().should(visible);
-  }
 
 
   @AfterClass(alwaysRun = true, description = "Test Teardown")
