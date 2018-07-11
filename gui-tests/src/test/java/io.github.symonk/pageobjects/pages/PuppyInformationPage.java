@@ -9,7 +9,7 @@ public class PuppyInformationPage {
 
     private static final SelenideElement ADOPT_ME_BUTTON = $(By.xpath("//*[@id='content']/div[2]/div/form/div/input[1]"));
 
-    public PuppyCartPage adoptHannah() {
+    public PuppyCartPage adoptPuppy() {
         ADOPT_ME_BUTTON.click();
         return new PuppyCartPage();
     }

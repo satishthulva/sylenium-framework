@@ -9,14 +9,20 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class PuppyAdoptionHomePage {
 
-  private static final SelenideElement HANNA_VIEW_DETAILS_BUTTON = $(By.xpath("//form[@action=\"/puppies/4\"]//input"));
+  private static final SelenideElement BROOK_VIEW_DETAILS_BUTTON = $(By.xpath("//form[@action='/puppies/4']//input"));
+  private static final SelenideElement HANNA_VIEW_DETAILS_BUTTON = $(By.xpath("//form[@action='/puppies/3']//input"));
   private static final SelenideElement CUSTOMER_MESSAGE = $(By.id("notice"));
 
   public PuppyAdoptionHomePage openPage() {
     return Selenide.open("http://puppies.herokuapp.com/", PuppyAdoptionHomePage.class);
   }
 
-  public PuppyInformationPage viewHannahsDetails() {
+  public PuppyInformationPage viewBrookDetails() {
+    BROOK_VIEW_DETAILS_BUTTON.click();
+    return new PuppyInformationPage();
+  }
+
+  public PuppyInformationPage viewHannahDetails() {
     HANNA_VIEW_DETAILS_BUTTON.click();
     return new PuppyInformationPage();
   }

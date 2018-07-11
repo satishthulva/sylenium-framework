@@ -7,14 +7,14 @@
     <test name="Regression Chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="io.github.symonk.testcases.RandomTests"/>
+            <class name="io.github.symonk.testcases.PuppyAdoptionTests"/>
         </classes>
     </test>
 
     <!--<test name="Regression Firefox">-->
         <!--<parameter name="browser" value="firefox"/>-->
         <!--<classes>-->
-            <!--<class name="io.github.symonk.testcases.RandomTests"/>-->
+            <!--<class name="io.github.symonk.testcases.PuppyAdoptionTestsonTests"/>-->
         <!--</classes>-->
     <!--</test>-->
 </suite>
