@@ -5,12 +5,10 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.PropertiesModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
+import io.github.symonk.listeners.WebEventListener;
 import io.github.symonk.selenide.custom_listeners.CustomListener;
 import io.github.symonk.selenide.custom_listeners.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
-import net.lightbody.bmp.BrowserMobProxy;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
 import org.slf4j.MDC;
 import org.testng.annotations.*;
 
@@ -23,7 +21,7 @@ public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
   private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
-  private final BrowserMobProxy proxyServer = new BrowserMobProxyServer();
+
 
   private final ManagesFrameworkProperties properties;
   protected final ProvidesLanguageValues languageHelper;
@@ -34,13 +32,9 @@ public class TestBaseTemplate {
     this.languageHelper = languageHelper;
   }
 
-
   @BeforeSuite(alwaysRun = true, description = "Configure proxy")
   public void setupProxy() {
-    if (properties.tunnelThroughProxy()) {
-      proxyServer.start();
-      WebDriverRunner.setProxy(ClientUtil.createSeleniumProxy(proxyServer));
-    }
+    WebDriverRunner.addListener(new WebEventListener());
   }
 
   @BeforeMethod(alwaysRun = true, description = "Initialize Test Logger")
@@ -81,9 +75,6 @@ public class TestBaseTemplate {
 
   @AfterSuite(alwaysRun = true, description = "collect .har data")
   public void correlateHarData() {
-    if (properties.tunnelThroughProxy()) {
-      proxyServer.getHar();
-      proxyServer.stop();
-    }
+
   }
 }

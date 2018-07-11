@@ -11,10 +11,10 @@
         </classes>
     </test>
 
-    <test name="Regression Firefox">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-            <class name="io.github.symonk.testcases.RandomTests"/>
-        </classes>
-    </test>
+    <!--<test name="Regression Firefox">-->
+        <!--<parameter name="browser" value="firefox"/>-->
+        <!--<classes>-->
+            <!--<class name="io.github.symonk.testcases.RandomTests"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>

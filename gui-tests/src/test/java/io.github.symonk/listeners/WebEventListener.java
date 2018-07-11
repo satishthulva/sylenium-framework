@@ -1,11 +1,13 @@
 package io.github.symonk.listeners;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
+@Slf4j
 public class WebEventListener implements WebDriverEventListener {
 
   @Override
@@ -45,7 +47,9 @@ public class WebEventListener implements WebDriverEventListener {
   public void afterNavigateRefresh(WebDriver webDriver) {}
 
   @Override
-  public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {}
+  public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
+    log.info("Looking for element by: " + by);
+  }
 
   @Override
   public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {}
