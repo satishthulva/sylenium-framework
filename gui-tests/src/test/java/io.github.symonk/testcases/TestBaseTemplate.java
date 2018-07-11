@@ -10,7 +10,10 @@ import io.github.symonk.selenide.custom_listeners.CustomListener;
 import io.github.symonk.selenide.custom_listeners.CustomSelenideLogger;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Guice;
 
 import javax.inject.Inject;
 import java.lang.reflect.Method;

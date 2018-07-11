@@ -6,7 +6,6 @@ import io.github.symonk.domain.PuppyOrder;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PuppyCartPage {
