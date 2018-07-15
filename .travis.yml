@@ -19,6 +19,6 @@ cache:
   - "$HOME/.sonar/cache"
 addons:
   sonarcloud:
-    organization: io.symonk.github:selenide-framework
+    organization: selenide-framework
     token:
       secure: $SLACK_TOKEN
