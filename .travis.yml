@@ -19,7 +19,7 @@ before_script:
   - sleep 5
 
 
-script: sonar-scanner
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 
 addons:
