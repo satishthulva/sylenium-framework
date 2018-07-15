@@ -5,7 +5,7 @@ jobs:
     jdk: oraclejdk8
     script: mvn sonar:sonar
     script: sbt clean coverage test
-    script: mvn verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
+
 
 branches:
   only:
