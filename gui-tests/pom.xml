@@ -33,7 +33,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/java/io.github.symonk/testsuites/Regression.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <printSummary>true</printSummary>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
