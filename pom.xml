@@ -41,6 +41,38 @@
         <jaxb-api.version>2.3.0</jaxb-api.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>default</id>
+            <modules>
+                <module>gui-tests</module>
+                <module>api-tests</module>
+                <module>performance-tests</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>api-tests</id>
+            <modules>
+                <module>api-tests</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>gui-tests</id>
+            <modules>
+                <module>gui-tests</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>performance-tests</id>
+            <modules>
+                <module>performance-tests</module>
+            </modules>
+        </profile>
+    </profiles>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
         <dependency>
