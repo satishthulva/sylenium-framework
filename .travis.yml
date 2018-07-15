@@ -31,13 +31,15 @@ cache:
 addons:
   apt:
     update: true
-  chrome: stable
+  sources:
+    - google-chrome
   sonarcloud:
     organization: symonk-github
     token:
       secure: $SLACK_TOKEN
   packages:
     - lynx
+    - google-chrome-stable
 
 after_failure:
   - cat gui-tests/target/surefire-reports/*.dumpstream
