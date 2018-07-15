@@ -16,6 +16,8 @@ import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Slf4j
 @Epic("Puppy Adoption Epic")
 @Feature("Puppy Adoption Process Feature")
@@ -79,11 +81,23 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
             .orderPriceForAllItemsIsCorrect(languageHelper.getResource("total.price.all.options"), order);
   }
 
+  @Test(description = "This fails on purpose and gets retried")
+  @Story("As an automation engineer, I want to retry a failed test")
+  @Issue("ISS-004")
+  @TmsLink("TMS-004")
+  @Severity(SeverityLevel.CRITICAL)
+  public void failedTestRetries() {
+    new PuppyAdoptionHomePage()
+            .openPage()
+            .viewBrookDetails()
+            .adoptPuppy();
+    assertThat(true).isEqualTo(false);
+  }
 
 
 
   @AfterClass(alwaysRun = true, description = "[Test Teardown]")
   public void afterClass() {
-
+    log.info("This runs after each class");
   }
 }
