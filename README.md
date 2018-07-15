@@ -1,10 +1,5 @@
 # Selenide-TestNG-Allure2-Framework
-This framework is provided as is, for complete commercial use and modification (as per MIT).  The reason behind this framework is that far too much time is spent in building up 
-test automation framework(s) or hardnesses from scratch, including too much boilerplate and configuration.  Countless hours are spent messing around with maven etc.  This project takes all the heavy lifting and boilerplate and applies it for you.
-All you need to do to get started is, clone this project (remove the dummy tests) and build your own PageObjects, TestCases and respective suites to run them (Data/Domain sold seperately :)).
-
-This framework is powered by selenide, testng, allure2 reporting and is an easy method of building a robust, parallelised ui framework on a multi threaded setup with a beautiful front end report
-to display the end result.  see below for more indepth information and how to get started.
+No fuss, no boilerplate, no confusion.  a test harness to aid you in building a robust and parallelised ui / end2end test framework, fast.
 
 
 ### Build information:
