@@ -3,6 +3,7 @@ jobs:
   include:
   - stage: test
     jdk: oraclejdk8
+    script: mvn sonar:sonar
     script: sbt clean coverage test
     script: mvn verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
 
@@ -13,6 +14,10 @@ branches:
 addons:
   apt:
     update: true
+   sonarcloud:
+      organization: "symonk-github"
+      token:
+        secure: ""
   chrome: stable
 
 before_install:
