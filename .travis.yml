@@ -8,3 +8,6 @@ jobs:
 branches:
   only:
   - master
+
+git:
+  depth: 99999
