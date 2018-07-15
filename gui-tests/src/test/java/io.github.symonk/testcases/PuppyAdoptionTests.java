@@ -36,6 +36,64 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
     this.orderProvider = orderProvider;
   }
 
+  @Test(description = "Hannah can be adopted")
+  @Story("As a customer, I can adopt Hannah without any options")
+  @Issue("ISS-001")
+  @TmsLink("TMS-001")
+  @Severity(SeverityLevel.CRITICAL)
+  public void adoptingHannahWithoutAnyOptions() {
+        new PuppyAdoptionHomePage()
+            .openPage()
+            .viewHannahDetails()
+            .adoptPuppy()
+            .completeTheAdoption()
+            .fillInOrderDetails(orderProvider.getRandomOrder())
+            .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
+  }
+
+  @Test(description = "Brook can be adopted")
+  @Story("As a customer, I can adopt Brook including all options")
+  @Issue("ISS-002")
+  @TmsLink("TMS-002")
+  @Severity(SeverityLevel.CRITICAL)
+  public void adoptingBrookWithAllOptions() {
+    final PuppyOrder order = orderProvider.getRandomOrderWithAllOptions();
+    new PuppyAdoptionHomePage()
+            .openPage()
+            .viewBrookDetails()
+            .adoptPuppy()
+            .completeTheAdoption(order)
+            .fillInOrderDetails(order)
+            .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
+  }
+
+  @Test(description = "Cart reflects correct pricing for all options")
+  @Story("As a customer, I am billed correctly for my options")
+  @Issue("ISS-003")
+  @TmsLink("TMS-003")
+  @Severity(SeverityLevel.CRITICAL)
+  public void optionsAreCorrectlyBilled() {
+    final PuppyOrder order = orderProvider.getRandomOrderWithAllOptions();
+    new PuppyAdoptionHomePage()
+            .openPage()
+            .viewBrookDetails()
+            .adoptPuppy()
+            .orderPriceForAllItemsIsCorrect(languageHelper.getResource("total.price.all.options"), order);
+  }
+
+  @Test(description = "This fails on purpose and gets retried")
+  @Story("As an automation engineer, I want to retry a failed test")
+  @Issue("ISS-004")
+  @TmsLink("TMS-004")
+  @Severity(SeverityLevel.CRITICAL)
+  public void failedTestRetries() {
+    new PuppyAdoptionHomePage()
+            .openPage()
+            .viewBrookDetails()
+            .adoptPuppy();
+    assertThat(true).isEqualTo(false);
+  }
+
 
   @AfterClass(alwaysRun = true, description = "[Test Teardown]")
   public void afterClass() {
