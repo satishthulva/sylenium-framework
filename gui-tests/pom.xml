@@ -29,6 +29,7 @@
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>${thread.count}</threadCount>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/java/io.github.symonk/testsuites/Regression.xml</suiteXmlFile>
                     </suiteXmlFiles>
