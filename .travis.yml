@@ -19,6 +19,9 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 addons:
+  apt:
+    update: true
+  chrome: stable
   sonarcloud:
     organization: symonk-github
     token:
