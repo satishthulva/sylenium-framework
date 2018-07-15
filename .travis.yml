@@ -1,0 +1,2 @@
+language: java
+script: mvn clean verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
