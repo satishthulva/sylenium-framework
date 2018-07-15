@@ -19,11 +19,7 @@ before_script:
   - sleep 5
 
 
-jobs:
-  include:
-  - stage: test
-    jdk: oraclejdk8
-    script: mvn sonar:sonar
+script: sonar-scanner
 
 
 addons:
