@@ -1,4 +1,24 @@
 language: java
+jdk: oraclejdk8
+
+branches:
+  only:
+  - master
+
+git:
+  depth: 99999
+
+before_install:
+  - sudo apt-get install -y libappindicator1 fonts-liberation
+  - export CHROME_BIN=/usr/bin/google-chrome
+
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 5
+
+
 jobs:
   include:
   - stage: test
@@ -6,26 +26,8 @@ jobs:
     script: mvn sonar:sonar
 
 
-branches:
-  only:
-  - master
-
 addons:
-  apt:
-    update: true
-  chrome: stable
-
-before_install:
-  - sudo apt-get install -y libappindicator1 fonts-liberation
-  - export CHROME_BIN=/usr/bin/google-chrome
-
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 5
-
-before_cache:
-  - rm -fr /home/travis/.m2/repository/webdriver/
-
-git:
-  depth: 99999
+  sonarcloud:
+    organization: "symonk-github"
+    token:
+      secure: ${SLACK_TOKEN}
