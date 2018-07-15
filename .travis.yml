@@ -17,7 +17,7 @@ before_script:
 
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-  - mvn verify -e -X
+  - mvn verify -Pgui-tests
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
