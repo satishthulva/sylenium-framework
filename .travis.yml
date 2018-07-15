@@ -1,2 +1,10 @@
 language: java
-script: mvn clean verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
+jobs:
+  include:
+  - stage: test
+    jdk: oraclejdk8
+    script: mvn verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
+jdk: oraclejdk8
+branches:
+  only:
+  - master
