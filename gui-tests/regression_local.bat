@@ -1,6 +1,6 @@
 taskkill /f /im chromedriver.exe
 taskkill /f /im geckodriver.exe
 call mvn clean 
-call mvn verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
+call mvn verify -Pgui-tests
 cd target
 call allure serve
