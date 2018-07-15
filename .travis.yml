@@ -40,5 +40,5 @@ addons:
     - lynx
 
 after_failure:
-  - cat target/surefire-reports/*.txt
-  - cat target/failsafe-reports/*.txt
+  - cat target/surefire-reports/*.dumpstream
+  - cat target/failsafe-reports/*.dumpstream
