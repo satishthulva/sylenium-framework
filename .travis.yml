@@ -13,10 +13,6 @@ branches:
 addons:
   apt:
     update: true
-   sonarcloud:
-      organization: "symonk-github"
-      token:
-            secure: ${SLACK_TOKEN}
   chrome: stable
 
 before_install:
@@ -30,8 +26,6 @@ before_script:
 
 before_cache:
   - rm -fr /home/travis/.m2/repository/webdriver/
-
-
 
 git:
   depth: 99999
