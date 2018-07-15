@@ -3,6 +3,7 @@ jobs:
   include:
   - stage: test
     jdk: oraclejdk8
+    script: sbt clean coverage test
     script: mvn verify -Dselenide.browser=chrome -Dthread.count=10 -Dexplicit.wait.timeout=15000
 
 branches:
@@ -25,6 +26,8 @@ before_script:
 
 before_cache:
   - rm -fr /home/travis/.m2/repository/webdriver/
+
+after_success: "sbt coveralls"
 
 
 git:
