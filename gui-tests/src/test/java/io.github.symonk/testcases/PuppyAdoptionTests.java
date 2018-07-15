@@ -82,15 +82,6 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
             languageHelper.getResource("total.price.all.options"), order);
   }
 
-  @Test(description = "This fails on purpose and gets retried")
-  @Story("As an automation engineer, I want to retry a failed test")
-  @Issue("ISS-004")
-  @TmsLink("TMS-004")
-  @Severity(SeverityLevel.CRITICAL)
-  public void failedTestRetries() {
-    new PuppyAdoptionHomePage().openPage().viewBrookDetails().adoptPuppy();
-    assertThat(true).isEqualTo(false);
-  }
 
   @AfterClass(alwaysRun = true, description = "[Test Teardown]")
   public void afterClass() {
