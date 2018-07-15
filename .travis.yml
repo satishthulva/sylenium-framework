@@ -10,4 +10,4 @@ branches:
   - master
 
 after_failure:
-    - cat MSBuild_*.failure.txt
+    - cat target/surefire-reports/*.txt
