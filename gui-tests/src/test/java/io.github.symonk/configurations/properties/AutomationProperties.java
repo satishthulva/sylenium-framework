@@ -105,7 +105,8 @@ public class AutomationProperties implements ManagesFrameworkProperties {
 
   @Override
   public boolean getIsRunningOnTravis() {
-    return Boolean.parseBoolean(retrieveProperty(RUNNING_ON_TRAVIS));
+    boolean b = Boolean.parseBoolean(retrieveProperty(RUNNING_ON_TRAVIS));
+    return b;
   }
 
   @Override
