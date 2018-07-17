@@ -17,9 +17,9 @@ public class ReportHelper implements ReportInteractable {
       "environment.properties file already exists, deleting it";
   private static final String DUPLICATE_FILE_ERROR =
       "io error occurred when checking for duplicate files";
-  private static final String DEFAULT_DIRECTORY = "/home/travis/build/symonk/selenide-testng-allure2-test-automation-framework/gui-tests/target/allure-results/environment.properties";
+  private static final String DEFAULT_TRAVIS_PATH = "/home/travis/build/symonk/selenide-testng-allure2-test-automation-framework/gui-tests/target/allure-results/environment.properties";
+  private static final String DEFAULT_LOCAL_PATH = "target\\allure-results\\environment.properties";
   private static final String PROPERTIES_HEADER = "Generated runtime properties";
-  private static final String STREAM_CLOSE_ERROR = "Failed to close output stream";
   private static final String INVALID_ARGS =
       "provided arguments do not meet a valid test run, aborting the run";
   private static final String IO_EXCEPTION =
@@ -43,7 +43,7 @@ public class ReportHelper implements ReportInteractable {
 
     final FileOutputStream fos;
     try {
-      final Path pathToFile = Paths.get(DEFAULT_DIRECTORY);
+      final Path pathToFile = Paths.get(properties.getIsRunningOnTravis() ? DEFAULT_LOCAL_PATH : DEFAULT_TRAVIS_PATH);
       if (!removeFileIfExists(pathToFile)) {
         Files.createDirectories(pathToFile.getParent());
       }

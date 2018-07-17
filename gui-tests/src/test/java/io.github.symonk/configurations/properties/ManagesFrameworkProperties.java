@@ -26,6 +26,8 @@ public interface ManagesFrameworkProperties {
 
   boolean tunnelThroughProxy();
 
+  boolean getIsRunningOnTravis();
+
   Map<String, String> getPropertiesAsMap();
 
   SupportedLanguage getLanguage();
