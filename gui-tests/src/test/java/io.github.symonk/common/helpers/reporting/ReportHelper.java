@@ -17,7 +17,7 @@ public class ReportHelper implements ReportInteractable {
       "environment.properties file already exists, deleting it";
   private static final String DUPLICATE_FILE_ERROR =
       "io error occurred when checking for duplicate files";
-  private static final String DEFAULT_DIRECTORY = "target\\allure-results\\environment.properties";
+  private static final String DEFAULT_DIRECTORY = "/home/travis/build/symonk/selenide-testng-allure2-test-automation-framework/gui-tests/target/";
   private static final String PROPERTIES_HEADER = "Generated runtime properties";
   private static final String STREAM_CLOSE_ERROR = "Failed to close output stream";
   private static final String INVALID_ARGS =
