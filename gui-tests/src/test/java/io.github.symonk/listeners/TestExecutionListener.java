@@ -27,6 +27,10 @@ public class TestExecutionListener implements IExecutionListener {
 
   private void configureTestRun() {
     log.info("configuring the test run!");
+
+    Configuration.startMaximized = false;
+    Configuration.headless = true;
+
     Configuration.browser = automationProperties.getBrowser();
     if (automationProperties.shouldRunDistributed()) {
       Configuration.remote = automationProperties.getGridEndpoint();
