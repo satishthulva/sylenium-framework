@@ -17,7 +17,7 @@ before_script:
 
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-  - mvn verify -pl gui-tests -Dselenide.headless=true
+  - mvn verify -pl gui-tests
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -28,11 +28,11 @@ cache:
   directories:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
+
 addons:
   apt:
     update: true
-  sources:
-    - google-chrome
+  chrome: stable
   sonarcloud:
     organization: symonk-github
     token:
@@ -41,6 +41,3 @@ addons:
     - lynx
     - google-chrome-stable
 
-after_failure:
-  - cat gui-tests/target/surefire-reports/*.dumpstream
-  - cat gui-tests/target/failsafe-reports/*.dumpstream
