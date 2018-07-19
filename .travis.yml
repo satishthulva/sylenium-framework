@@ -37,7 +37,3 @@ addons:
     organization: symonk-github
     token:
       secure: $SLACK_TOKEN
-  packages:
-    - lynx
-    - google-chrome-stable
-
