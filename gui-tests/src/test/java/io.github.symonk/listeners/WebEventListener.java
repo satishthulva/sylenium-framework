@@ -137,13 +137,5 @@ public class WebEventListener implements WebDriverEventListener {
     // -> handled by the framework (Interface Segregation Principle Selenium!)
   }
 
-  @Override
-  public void beforeGetText(final WebElement webElement, final WebDriver webDriver) {
-    log.info(String.format("Attempting to read text from a webelement: %s", webElement));
-  }
 
-  @Override
-  public void afterGetText(final WebElement webElement, final WebDriver webDriver, final String s) {
-    log.info(String.format("The text was: %s", s));
-  }
 }
