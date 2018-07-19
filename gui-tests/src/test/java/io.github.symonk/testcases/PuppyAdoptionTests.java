@@ -9,10 +9,8 @@ import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.PuppyAdoptionHomePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Guice;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 
 import javax.inject.Inject;
 
@@ -43,12 +41,12 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   @Severity(SeverityLevel.CRITICAL)
   public void adoptingHannahWithoutAnyOptions() {
     new PuppyAdoptionHomePage()
-        .openPage()
-        .viewHannahDetails()
-        .adoptPuppy()
-        .completeTheAdoption()
-        .fillInOrderDetails(orderProvider.getRandomOrder())
-        .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
+            .openPage()
+            .viewHannahDetails()
+            .adoptPuppy()
+            .completeTheAdoption()
+            .fillInOrderDetails(orderProvider.getRandomOrder())
+            .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
   }
 
   @Test(description = "Brook can be adopted")
