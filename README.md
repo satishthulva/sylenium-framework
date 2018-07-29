@@ -26,10 +26,4 @@ No fuss, no boilerplate, no confusion.  a test harness to aid you in building a 
 
 ### Reporting capabilities:
 
-![Auto Architecture](.images/report-dashboard.png "Report Dashboard")
-
-![Auto Architecture](.images/report-example-cases.png "Report Tests")
-
-![Auto Architecture](.images/report-graph-data.png "Report Graphs")
-
 
