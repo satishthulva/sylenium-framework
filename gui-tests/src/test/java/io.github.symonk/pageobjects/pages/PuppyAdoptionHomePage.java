@@ -7,11 +7,12 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class PuppyAdoptionHomePage {
 
-  private static final SelenideElement BROOK_VIEW_DETAILS_BUTTON = $(By.xpath("//form[@action='/puppies/4']//input"));
-  private static final SelenideElement HANNA_VIEW_DETAILS_BUTTON = $(By.xpath("//form[@action='/puppies/3']//input"));
+  private static final SelenideElement BROOK_VIEW_DETAILS_BUTTON = $x("//form[@action='/puppies/4']//input");
+  private static final SelenideElement HANNA_VIEW_DETAILS_BUTTON = $x("//form[@action='/puppies/3']//input");
   private static final SelenideElement CUSTOMER_MESSAGE = $(By.id("notice"));
 
   @Step("Opening the puppy adoption home page")

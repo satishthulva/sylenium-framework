@@ -16,8 +16,6 @@ import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @Slf4j
 @Epic("Puppy Adoption Epic")
 @Feature("Puppy Adoption Process Feature")

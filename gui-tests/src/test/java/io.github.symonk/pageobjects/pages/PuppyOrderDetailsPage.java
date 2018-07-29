@@ -6,10 +6,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class PuppyOrderDetailsPage {
 
-  private static final SelenideElement PLACE_ORDER_BUTTON = $(By.xpath("//*[@id='new_order']/div[6]/input"));
+  private static final SelenideElement PLACE_ORDER_BUTTON = $x("//*[@id='new_order']/div[6]/input");
   private static final SelenideElement ORDER_NAME_TEXTBOX = $(By.id("order_name"));
   private static final SelenideElement ORDER_ADDRESS_TEXTBOX = $(By.id("order_address"));
   private static final SelenideElement ORDER_EMAIL_TEXTBOX = $(By.id("order_email"));
