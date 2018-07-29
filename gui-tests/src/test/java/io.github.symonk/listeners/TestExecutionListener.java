@@ -5,6 +5,7 @@ import io.github.symonk.common.helpers.reporting.ReportHelper;
 import io.github.symonk.common.helpers.reporting.ReportInteractable;
 import io.github.symonk.configurations.properties.AutomationProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.IExecutionListener;
 
 @Slf4j
@@ -39,7 +40,6 @@ public class TestExecutionListener implements IExecutionListener {
 
     Configuration.baseUrl = automationProperties.getBaseUrl();
     Configuration.timeout = automationProperties.getWaitTimeout();
-    Configuration.headless = true;
   }
 
   private void pushReportInformation() {
