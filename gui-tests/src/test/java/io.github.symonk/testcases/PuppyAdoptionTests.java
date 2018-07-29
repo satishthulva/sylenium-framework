@@ -9,8 +9,10 @@ import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.PuppyAdoptionHomePage;
 import io.qameta.allure.*;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Guice;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 
