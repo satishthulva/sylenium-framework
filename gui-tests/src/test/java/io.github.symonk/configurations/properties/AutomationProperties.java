@@ -23,6 +23,7 @@ public class AutomationProperties implements ManagesFrameworkProperties {
   private static final String USE_PROXY = "tunnel.through.proxy";
   private static final String LANGUAGE = "language";
   private static final String NOT_SPECIFIED = "not specified";
+  private static final String RUNNING_ON_TRAVIS = "is.running.on.travis";
 
   private final Properties properties = new Properties();
 
@@ -100,6 +101,12 @@ public class AutomationProperties implements ManagesFrameworkProperties {
     }
 
     return tempMap;
+  }
+
+  @Override
+  public boolean getIsRunningOnTravis() {
+    boolean b = Boolean.parseBoolean(retrieveProperty(RUNNING_ON_TRAVIS));
+    return b;
   }
 
   @Override

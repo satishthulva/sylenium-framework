@@ -129,12 +129,12 @@ public class WebEventListener implements WebDriverEventListener {
 
   @Override
   public <X> void beforeGetScreenshotAs(final OutputType<X> outputType) {
-    // -> handled by the framework (Interface Segregation Principle Selenium!)
+   log.info("About to take a screenshot..");
   }
 
   @Override
   public <X> void afterGetScreenshotAs(final OutputType<X> outputType, final X x) {
-    // -> handled by the framework (Interface Segregation Principle Selenium!)
+    log.info("Screenshot captured..");
   }
 
   @Override
