@@ -39,6 +39,7 @@ public class TestExecutionListener implements IExecutionListener {
 
     Configuration.baseUrl = automationProperties.getBaseUrl();
     Configuration.timeout = automationProperties.getWaitTimeout();
+    Configuration.headless = true;
   }
 
   private void pushReportInformation() {
