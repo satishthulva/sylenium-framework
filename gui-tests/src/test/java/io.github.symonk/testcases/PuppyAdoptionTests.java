@@ -1,8 +1,8 @@
 package io.github.symonk.testcases;
 
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
-import io.github.symonk.configurations.guice.PropertiesModule;
-import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
+import io.github.symonk.configurations.guice.GuiceModule;
+import io.github.symonk.configurations.properties.FrameworkProperties;
 import io.github.symonk.data.OrderProvidable;
 import io.github.symonk.domain.PuppyOrder;
 import io.github.symonk.listeners.TestExecutionListener;
@@ -19,7 +19,7 @@ import javax.inject.Inject;
 @Slf4j
 @Epic("Puppy Adoption Epic")
 @Feature("Puppy Adoption Process Feature")
-@Guice(modules = PropertiesModule.class)
+@Guice(modules = GuiceModule.class)
 @Listeners(TestExecutionListener.class)
 public class PuppyAdoptionTests extends TestBaseTemplate {
 
@@ -27,7 +27,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
 
   @Inject
   public PuppyAdoptionTests(
-      final ManagesFrameworkProperties properties,
+      final FrameworkProperties properties,
       final ProvidesLanguageValues languageHelper,
       final OrderProvidable orderProvider) {
     super(properties, languageHelper);

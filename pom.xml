@@ -39,6 +39,7 @@
         <browsermob.proxy.version>2.1.5</browsermob.proxy.version>
         <assertj.version>3.10.0</assertj.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
+        <owner.version>1.0.10</owner.version>
     </properties>
 
     <profiles>
@@ -174,6 +175,12 @@
             <groupId>com.lazerycode.jmeter</groupId>
             <artifactId>jmeter-maven-plugin</artifactId>
             <version>${jmeter.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner-java8</artifactId>
+            <version>${owner.version}</version>
         </dependency>
     </dependencies>
 

@@ -21,6 +21,14 @@ public enum SupportedLanguage {
     this.locale = new Locale(locale);
   }
 
+  public static SupportedLanguage getLanguage(final String language) {
+    switch(language) {
+      case "english": return ENGLISH;
+      case "french": return FRENCH;
+      default: return ENGLISH;
+    }
+  }
+
   public String getResourceFile() {
     return resourceFile;
   }

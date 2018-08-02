@@ -3,8 +3,8 @@ package io.github.symonk.testcases;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
-import io.github.symonk.configurations.guice.PropertiesModule;
-import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
+import io.github.symonk.configurations.guice.GuiceModule;
+import io.github.symonk.configurations.properties.FrameworkProperties;
 import io.github.symonk.listeners.WebEventListener;
 import io.github.symonk.selenide.custom_listeners.CustomListener;
 import io.github.symonk.selenide.custom_listeners.CustomSelenideLogger;
@@ -18,19 +18,19 @@ import javax.inject.Inject;
 import java.lang.reflect.Method;
 
 @Slf4j
-@Guice(modules = PropertiesModule.class)
+@Guice(modules = GuiceModule.class)
 public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
   private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
 
 
-  private final ManagesFrameworkProperties properties;
+  private final FrameworkProperties properties;
   protected final ProvidesLanguageValues languageHelper;
 
 
   @Inject
-  public TestBaseTemplate(final ManagesFrameworkProperties properties, final ProvidesLanguageValues languageHelper) {
+  public TestBaseTemplate(final FrameworkProperties properties, final ProvidesLanguageValues languageHelper) {
     this.properties = properties;
     this.languageHelper = languageHelper;
   }

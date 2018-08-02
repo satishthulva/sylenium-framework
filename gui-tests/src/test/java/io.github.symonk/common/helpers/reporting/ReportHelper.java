@@ -1,7 +1,9 @@
 package io.github.symonk.common.helpers.reporting;
 
-import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
+import io.github.symonk.configurations.properties.FrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.aeonbits.owner.ConfigFactory;
+import org.sonatype.plexus.components.sec.dispatcher.model.ConfigProperty;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,21 +15,17 @@ import java.util.Properties;
 @Slf4j
 public class ReportHelper implements ReportInteractable {
 
-  private static final String FILE_EXISTS =
-      "environment.properties file already exists, deleting it";
-  private static final String DUPLICATE_FILE_ERROR =
-      "io error occurred when checking for duplicate files";
+  private static final String FILE_EXISTS = "environment.properties file already exists, deleting it";
+  private static final String DUPLICATE_FILE_ERROR = "io error occurred when checking for duplicate files";
   private static final String DEFAULT_TRAVIS_PATH = "/home/travis/build/symonk/selenide-testng-allure2-test-automation-framework/gui-tests/target/allure-results/environment.properties";
   private static final String DEFAULT_LOCAL_PATH = "target\\allure-results\\environment.properties";
   private static final String PROPERTIES_HEADER = "Generated runtime properties";
-  private static final String INVALID_ARGS =
-      "provided arguments do not meet a valid test run, aborting the run";
-  private static final String IO_EXCEPTION =
-      "IO error occurred when generating or pushing the environment file";
+  private static final String INVALID_ARGS = "provided arguments do not meet a valid test run, aborting the run";
+  private static final String IO_EXCEPTION = "IO error occurred when generating or pushing the environment file";
 
-  private final ManagesFrameworkProperties properties;
+  private final FrameworkProperties properties;
 
-  public ReportHelper(final ManagesFrameworkProperties properties) {
+  public ReportHelper(final FrameworkProperties properties) {
     this.properties = properties;
   }
 
@@ -38,12 +36,11 @@ public class ReportHelper implements ReportInteractable {
 
   private void generateEnvironmentPropertiesFile() {
 
-    final Properties environmentProperties = new Properties();
-    properties.getPropertiesAsMap().forEach(environmentProperties::setProperty);
+    final Properties environmentProperties = ConfigFactory.getProperties();
 
     final FileOutputStream fos;
     try {
-      final Path pathToFile = Paths.get(properties.getIsRunningOnTravis() ? DEFAULT_TRAVIS_PATH : DEFAULT_LOCAL_PATH);
+      final Path pathToFile = Paths.get(properties.isThisRunningOnTravis() ? DEFAULT_TRAVIS_PATH : DEFAULT_LOCAL_PATH);
       if (!removeFileIfExists(pathToFile)) {
         Files.createDirectories(pathToFile.getParent());
       }

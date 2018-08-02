@@ -3,16 +3,16 @@ package io.github.symonk.listeners;
 import com.codeborne.selenide.Configuration;
 import io.github.symonk.common.helpers.reporting.ReportHelper;
 import io.github.symonk.common.helpers.reporting.ReportInteractable;
-import io.github.symonk.configurations.properties.AutomationProperties;
+import io.github.symonk.configurations.properties.FrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.IExecutionListener;
 
 @Slf4j
 public class TestExecutionListener implements IExecutionListener {
 
-  private final AutomationProperties automationProperties = new AutomationProperties();
-  private final ReportInteractable reportHelper = new ReportHelper(automationProperties);
+  private final FrameworkProperties properties = ConfigFactory.create(FrameworkProperties.class);
+  private final ReportInteractable reportHelper = new ReportHelper(properties);
 
   @Override
   public void onExecutionStart() {
@@ -29,17 +29,17 @@ public class TestExecutionListener implements IExecutionListener {
   private void configureTestRun() {
     log.info("configuring the test run!");
 
-    Configuration.browser = automationProperties.getBrowser();
-    if (automationProperties.shouldRunDistributed()) {
-      Configuration.remote = automationProperties.getGridEndpoint();
+    Configuration.browser = properties.selenideBrowser();
+    if (properties.useSeleniumGrid()) {
+      Configuration.remote = properties.seleniumGridEndpoint();
     }
-    if (automationProperties.browserUseCustomDimensions()) {
+    if (properties.useCustomBrowserDimensions()) {
       Configuration.startMaximized = false;
-      Configuration.browserSize = automationProperties.getBrowserDimensions();
+      Configuration.browserSize = properties.browserDimensions();
     }
 
-    Configuration.baseUrl = automationProperties.getBaseUrl();
-    Configuration.timeout = automationProperties.getWaitTimeout();
+    Configuration.baseUrl = properties.baseUrl();
+    Configuration.timeout = properties.explicitWaitTimeout();
   }
 
   private void pushReportInformation() {

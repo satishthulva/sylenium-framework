@@ -1,7 +1,7 @@
 package io.github.symonk.common.helpers.localisation;
 
 import io.github.symonk.common.enumerations.SupportedLanguage;
-import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
+import io.github.symonk.configurations.properties.FrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
@@ -14,8 +14,8 @@ public class LanguageHelper implements ProvidesLanguageValues {
   private final SupportedLanguage language;
 
   @Inject
-  public LanguageHelper(final ManagesFrameworkProperties properties) {
-    language = properties.getLanguage();
+  public LanguageHelper(final FrameworkProperties properties) {
+    language = SupportedLanguage.getLanguage(properties.language());
   }
 
   @Override
