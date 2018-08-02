@@ -2,8 +2,6 @@ package io.github.symonk.common.helpers.reporting;
 
 import io.github.symonk.configurations.properties.FrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.aeonbits.owner.ConfigFactory;
-import org.sonatype.plexus.components.sec.dispatcher.model.ConfigProperty;
 
 import javax.inject.Inject;
 import java.io.FileOutputStream;
@@ -11,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Properties;
 
 @Slf4j
 public class ReportHelper implements ReportInteractable {
