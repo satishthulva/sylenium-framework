@@ -9,7 +9,10 @@ import io.github.symonk.configurations.properties.FrameworkProperties;
 import io.github.symonk.data.OrderProvidable;
 import io.github.symonk.data.PuppyOrderFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
+
+import java.util.Properties;
 
 @Slf4j
 public class GuiceModule extends AbstractModule {
@@ -21,7 +24,9 @@ public class GuiceModule extends AbstractModule {
   }
 
   @Provides
+  @Singleton
   public FrameworkProperties getProperties() {
     return ConfigFactory.create(FrameworkProperties.class);
   }
+
 }

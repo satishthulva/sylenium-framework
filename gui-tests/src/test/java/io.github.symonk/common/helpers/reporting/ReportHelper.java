@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aeonbits.owner.ConfigFactory;
 import org.sonatype.plexus.components.sec.dispatcher.model.ConfigProperty;
 
+import javax.inject.Inject;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,6 +26,7 @@ public class ReportHelper implements ReportInteractable {
 
   private final FrameworkProperties properties;
 
+  @Inject
   public ReportHelper(final FrameworkProperties properties) {
     this.properties = properties;
   }
@@ -35,9 +37,6 @@ public class ReportHelper implements ReportInteractable {
   }
 
   private void generateEnvironmentPropertiesFile() {
-
-    final Properties environmentProperties = ConfigFactory.getProperties();
-
     final FileOutputStream fos;
     try {
       final Path pathToFile = Paths.get(properties.isThisRunningOnTravis() ? DEFAULT_TRAVIS_PATH : DEFAULT_LOCAL_PATH);
@@ -46,7 +45,7 @@ public class ReportHelper implements ReportInteractable {
       }
       Files.createFile(pathToFile);
       fos = new FileOutputStream(pathToFile.toString());
-      environmentProperties.store(fos, PROPERTIES_HEADER);
+      properties.getAllProperties().store(fos, PROPERTIES_HEADER);
       fos.close();
     } catch (final IOException exception) {
       abortTheTestRun(IO_EXCEPTION);
