@@ -7,7 +7,7 @@ import org.aeonbits.owner.Config.Sources;
 import java.util.Properties;
 
 @HotReload
-@Sources("classpath:foo/bar/baz.properties")
+@Sources("classpath:framework.properties")
 public interface FrameworkProperties extends Config {
 
   /** General Framework Properties */
@@ -20,7 +20,7 @@ public interface FrameworkProperties extends Config {
   int explicitWaitTimeout(); // milliseconds
 
   @Key("language")
-  @DefaultValue("en")
+  @DefaultValue("english")
   String language();
 
   /** Browser Related Framework Properties */
