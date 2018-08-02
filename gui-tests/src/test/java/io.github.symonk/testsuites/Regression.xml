@@ -1,10 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Full Regression" verbose="2">
     <listeners>
-        <listener class-name="io.github.symonk.listeners.TestExecutionListener"/>
         <listener class-name="io.github.symonk.listeners.AnnotationTransformationListener"/>
     </listeners>
-    <test name="Regression Chrome">
+    <test name="Regression Pack">
         <classes>
             <class name="io.github.symonk.testcases.PuppyAdoptionTests"/>
         </classes>
