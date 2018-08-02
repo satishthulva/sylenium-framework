@@ -3,7 +3,7 @@ package io.github.symonk.testcases;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.PropertiesModule;
 import io.github.symonk.configurations.properties.ManagesFrameworkProperties;
-import io.github.symonk.data.OrderProvider;
+import io.github.symonk.data.OrderProvidable;
 import io.github.symonk.domain.PuppyOrder;
 import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.PuppyAdoptionHomePage;
@@ -23,13 +23,13 @@ import javax.inject.Inject;
 @Listeners(TestExecutionListener.class)
 public class PuppyAdoptionTests extends TestBaseTemplate {
 
-  private final OrderProvider orderProvider;
+  private final OrderProvidable orderProvider;
 
   @Inject
   public PuppyAdoptionTests(
       final ManagesFrameworkProperties properties,
       final ProvidesLanguageValues languageHelper,
-      final OrderProvider orderProvider) {
+      final OrderProvidable orderProvider) {
     super(properties, languageHelper);
     this.orderProvider = orderProvider;
   }
@@ -45,7 +45,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
             .viewHannahDetails()
             .adoptPuppy()
             .completeTheAdoption()
-            .fillInOrderDetails(orderProvider.getRandomOrder())
+            .fillInOrderDetails(orderProvider.createRandomOrder())
             .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
   }
 
@@ -55,7 +55,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   @TmsLink("TMS-002")
   @Severity(SeverityLevel.CRITICAL)
   public void adoptingBrookWithAllOptions() {
-    final PuppyOrder order = orderProvider.getRandomOrderWithAllOptions();
+    final PuppyOrder order = orderProvider.createRandomOrderWithAllOptions();
     new PuppyAdoptionHomePage()
         .openPage()
         .viewBrookDetails()
@@ -71,7 +71,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   @TmsLink("TMS-003")
   @Severity(SeverityLevel.CRITICAL)
   public void optionsAreCorrectlyBilled() {
-    final PuppyOrder order = orderProvider.getRandomOrderWithAllOptions();
+    final PuppyOrder order = orderProvider.createRandomOrderWithAllOptions();
     new PuppyAdoptionHomePage()
         .openPage()
         .viewBrookDetails()
