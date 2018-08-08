@@ -6,6 +6,8 @@ import io.github.symonk.common.helpers.reporting.ReportInteractable;
 import io.github.symonk.configurations.properties.FrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.IExecutionListener;
 
 @Slf4j
@@ -28,8 +30,8 @@ public class TestExecutionListener implements IExecutionListener {
 
   private void configureTestRun() {
     log.info("configuring the test run!");
-
     Configuration.browser = properties.selenideBrowser();
+    manageChromeSwitches();
     if (properties.useSeleniumGrid()) {
       Configuration.remote = properties.seleniumGridEndpoint();
     }
@@ -46,4 +48,16 @@ public class TestExecutionListener implements IExecutionListener {
     log.info("pushing report information");
     this.reportHelper.pushDynamicTestRunPropertiesToReport();
   }
+
+  private void manageChromeSwitches() {
+    if(Configuration.browser.equalsIgnoreCase("chrome")) {
+      final DesiredCapabilities caps = new DesiredCapabilities();
+      final ChromeOptions options = new ChromeOptions();
+      options.setHeadless(Configuration.headless);
+      options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+      caps.merge(options);
+      Configuration.browserCapabilities = caps;
+    }
+  }
+
 }
