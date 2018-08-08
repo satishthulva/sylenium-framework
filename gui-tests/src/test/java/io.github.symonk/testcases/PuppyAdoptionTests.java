@@ -27,10 +27,9 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
 
   @Inject
   public PuppyAdoptionTests(
-      final FrameworkProperties properties,
       final ProvidesLanguageValues languageHelper,
       final OrderProvidable orderProvider) {
-    super(properties, languageHelper);
+    super(languageHelper);
     this.orderProvider = orderProvider;
   }
 
