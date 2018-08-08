@@ -54,7 +54,8 @@ public class TestExecutionListener implements IExecutionListener {
       final DesiredCapabilities caps = new DesiredCapabilities();
       final ChromeOptions options = new ChromeOptions();
       options.setHeadless(Configuration.headless);
-      options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+      options.addArguments("--no-sandbox");
+      options.addArguments("--disable-dev-shm-usage");
       caps.merge(options);
       Configuration.browserCapabilities = caps;
     }
