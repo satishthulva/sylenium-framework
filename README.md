@@ -125,6 +125,35 @@ install the allure command line tool for reporting capabilities (important)
 ---
 
 # :triangular_flag_on_post: Framework functionality?
+This framework provides a serious amount of functionality right out of the box.
+
+```
+-> Driver and Page Factory free page objects
+-> Localisation support for multi lingual applications, simply use the localisation helper to read your values from .properties files.
+-> Powerful DSL powered by selenide to manage driver manipulation and powerful assertions.
+-> Robust test automation properties out of the box.
+-> Bespoke, beautiful reporting powered by Allure2, simply add @Step annotations in your page objects and thats it! or @Step anywhere for that matter.
+-> Robust mechanisms for webdriver management, we handle all downloading, setup and execution at the switch of a property.
+-> Run locally or distributed on selenium grid with the flip of a switch.
+-> Customised test-ng listeners to capture and manage test flow out of the box.
+-> Comes complete with jenkins example scripts.
+-> Multi threaded logging per test.
+-> 100% easily configurable settings for allure, properties, logging, webdriver management.
+-> Dependency injection capabilities powered by google Guice.
+-> Wealth of custom helpers, exceptions and annotations.
+-> Jira (cloud) integration to automatically manage test awareness (@wip).
+-> Slack integration to automatically manage notifications (@wip).
+-> Customised test failure data (stacktrace, screenshot, pagesource, logs) automatically in the report!
+-> Capturing .har performance data using a proxy (BrowserMob) available at the flip of a switch!
+-> Selenide custom conditions and listeners.
+-> Example tests and page objects to give you an example of how to get started
+-> Easy out of the box element containers (Custom page objects like tables etc) powered by Selenide.
+-> Wired together for you, using maven.
+-> Supports 2 languages out of the box, with easy capabilities to add more.
+-> Simple bat files to run locally straight away.
+-> Maven module for performance testing powered by Maven Jmeter.
+-> Maven module for api-testing, includes some example tests.
+```
 
 
 ### Contact me:
