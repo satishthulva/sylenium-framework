@@ -54,7 +54,9 @@ public class TestExecutionListener implements IExecutionListener {
       final DesiredCapabilities caps = new DesiredCapabilities();
       final ChromeOptions options = new ChromeOptions();
       options.setHeadless(Configuration.headless);
-      options.addArguments("--no-sandbox");
+      options.addArguments("--headless");
+      options.addArguments("--no-sandbox");  // Bypass OS security model
+      options.addArguments("--disable-gpu"); // applicable to windows os only
       caps.merge(options);
       Configuration.browserCapabilities = caps;
     }
