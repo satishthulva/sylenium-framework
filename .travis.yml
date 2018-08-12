@@ -33,5 +33,5 @@ addons:
     token:
       secure: $SLACK_TOKEN
   packages:
-    - google-chrome-stable
+    - google-chrome-stable --headless --disable-gpu
 
