@@ -69,6 +69,12 @@ not see beefy constructors that can prompt you to do some refactoring.
 
 ---
 
+### :crossed_flags: Not using CI :crossed_flags:
+
+Running tests locally is easy, get your tests into a scalable distributed execution mechanism within a CI pipeline. **note:** running locally is very useful, we can guard our feature branches that way. CI can help guard master PR's and production
+
+---
+
 ### Please contribute!
 
 Now that we have that out of the way, I would also like that you create atleast 1 pull request to the selenide project when using this framework.  You can find the repository here:
