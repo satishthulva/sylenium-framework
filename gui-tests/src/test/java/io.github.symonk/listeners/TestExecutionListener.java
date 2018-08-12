@@ -31,7 +31,6 @@ public class TestExecutionListener implements IExecutionListener {
   private void configureTestRun() {
     log.info("configuring the test run!");
     Configuration.browser = properties.selenideBrowser();
-    manageChromeSwitches();
     if (properties.useSeleniumGrid()) {
       Configuration.remote = properties.seleniumGridEndpoint();
     }
@@ -49,17 +48,5 @@ public class TestExecutionListener implements IExecutionListener {
     this.reportHelper.pushDynamicTestRunPropertiesToReport();
   }
 
-  private void manageChromeSwitches() {
-    if(Configuration.browser.equalsIgnoreCase("chrome")) {
-      final DesiredCapabilities caps = new DesiredCapabilities();
-      final ChromeOptions options = new ChromeOptions();
-      options.setHeadless(Configuration.headless);
-      options.addArguments("--headless");
-      options.addArguments("--no-sandbox");  // Bypass OS security model
-      options.addArguments("--disable-gpu"); // applicable to windows os only
-      caps.merge(options);
-      Configuration.browserCapabilities = caps;
-    }
-  }
 
 }
