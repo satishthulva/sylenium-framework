@@ -25,7 +25,25 @@ https://github.com/codeborne/selenide
 
 ### The framework stack :flags:
 
+# :triangular_flag_on_post: Framework stack
 
+| Technology | Description | Link
+| ------------- | ------------- | -------------
+| **Java**  | Programming language)  | [Java](https://java.com/en/download/)
+| **TestNG**  | Test framework for test ecosystem  | [TestNG](http://testng.org/doc/)
+| **Selenium WebDriver**  | Browser manipulation  | [Selenium](https://www.seleniumhq.org/)
+| **Rest Assured**  | Restful API DSL  | [Rest Assured](http://rest-assured.io/)
+| **AssertJ**  | Powerful assertsions library  | [AssertJ](http://joel-costigliola.github.io/assertj/)
+| **Maven**  | Build compilation, Dependency mgmt & test execution  | [Maven](https://maven.apache.org/)
+| **JFaker** | Data Generator (when applicable) | [JFaker](https://github.com/sgianelli/JFaker)
+| **Logback** | Logging framework | [Logback](https://logback.qos.ch/)
+| **Bespoke Reporting** | Dashboard of test results and debug data | [Allure Reporting](https://github.com/allure-framework/allure2)
+| **Guice** | Dependency injection | [Guice](https://github.com/google/guice)
+| **Automation Assistant** | Framework assistance by me | [Automation Assistant](https://github.com/symonk/Automation-Assistant)
+| **Selenium Grid** | Distributed testing | [Selenium Grid](https://www.seleniumhq.org/docs/07_selenium_grid.jsp)
+| **Lombok** | Removal of boilerplate code | [Lombok](https://projectlombok.org/download)
+| **Owner** | Properties management | [@Owner](http://owner.aeonbits.org/)
+| **Selenide** | Selenium wrapper | [@Selenide](http://http://selenide.org)
 
 
 
