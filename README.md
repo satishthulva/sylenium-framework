@@ -77,6 +77,8 @@ https://github.com/codeborne/selenide
 
 and ofcourse, open PR's here
 
+---
+
 # :triangular_flag_on_post: Framework stack
 
 | Technology | Description | Link
