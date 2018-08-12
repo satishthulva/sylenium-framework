@@ -31,10 +31,7 @@ public class TestExecutionListener implements IExecutionListener {
   private void configureTestRun() {
     log.info("configuring the test run!");
 
-    if(properties.isThisRunningOnTravis()) {
-      Configuration.browserCapabilities = customChromeOptions();
-    }
-
+    Configuration.headless = true;
     Configuration.browser = properties.selenideBrowser();
     if (properties.useSeleniumGrid()) {
       Configuration.remote = properties.seleniumGridEndpoint();
@@ -52,13 +49,5 @@ public class TestExecutionListener implements IExecutionListener {
     log.info("pushing report information");
     this.reportHelper.pushDynamicTestRunPropertiesToReport();
   }
-
-  private DesiredCapabilities customChromeOptions() {
-    final DesiredCapabilities capabilities = new DesiredCapabilities();
-    final ChromeOptions options = new ChromeOptions();
-    options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
-    return capabilities.merge(options);
-  }
-
 
 }

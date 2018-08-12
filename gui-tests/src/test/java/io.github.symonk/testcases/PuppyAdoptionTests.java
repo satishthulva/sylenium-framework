@@ -1,5 +1,6 @@
 package io.github.symonk.testcases;
 
+import com.codeborne.selenide.Configuration;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.GuiceModule;
 import io.github.symonk.configurations.properties.FrameworkProperties;
