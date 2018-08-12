@@ -111,14 +111,15 @@ and ofcourse, open PR's here
 In order to get started you should clone this repository and remove all test(s) around the Puppy adoption webpage, we use this just to demonstrate the testing capabilities.
 Alternatively you can fork this repo and work from there.
 
-```java
+```
 install git bash
 install jdk8+
 install maven 3.5.2+
 type -> git clone https://github.com/symonk/selenide-testng-allure2-test-automation-framework.git
 run ui_regression_parallel_chrome.bat to see the tests running in parallel! or alternatively:
 import the project into intellij
-install lombok intellij plugin and enable annotation-processing in intellij
+install lombok intellij plugin and enable annotation-processing in intellij (important)
+install the allure command line tool for reporting capabilities (important)
 ```
 
 ---
