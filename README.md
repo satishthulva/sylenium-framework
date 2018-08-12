@@ -9,56 +9,73 @@
 The aim of this project is simple, provide a powerful test automation harness for testing web applications with java.  Because test automation (especially) at the ui layer is plagued with bad practice
 I would like to start by outlining a few things of what **NOT** to use this harness for.  If such a license existed that would ban you from doing the following, I would apply it to this repository...
 
+---
 
-### Writing pointless short tests :crossed_flags:
+### :crossed_flags: Writing pointless short tests :crossed_flags:
 
 This framework should be used to test end to end flows of your application under no isolation of the stack.  Writing tests for simple ui
 functionality such as buttons being clickable, dropdown having values etc should be done by component tests.  Modern frameworks make this a piece of cake (angular, react etc).
 
-### Only automating at the ui layer :crossed_flags:
+---
+
+### :crossed_flags: Only automating at the ui layer :crossed_flags:
 
 Using this test automation harness as your only automated tests.  Focus on unit and integration tests as a primary method of coverage.
 
-### Writing garbage locators :crossed_flags:
+---
+
+### :crossed_flags: Writing garbage locators :crossed_flags:
 
 Using google chrome `copy-as-xpath` and using it directly etc.  Favour adding unique identifiers to your frontend to aid with automation.  `data-` attributes etc can be extremely useful.
 Using complex xpaths will end in hassle later, and please account for the page state being different later with parallel tests running.  Your useless xpath locator finding row 3 in a table wont 
 work later when 10 parallel tests have flooded the table data!
 
+---
 
-### Overcomplicating page objects :crossed_flags:
+### :crossed_flags: Overcomplicating page objects :crossed_flags:
 
 The beauty of this framework is we have **NO** driver or page factory code in our page objects, its all handled behind the scenes using custom reflection and java dynamic properties, coupled with smart webdriver management.
 Keep your page objects simple, exposing a fluent interface for the tests to consume.  Always remember a page object is **NOT** equal to a page `!=`.  A page object can encapsulate a simple
 dropdown on a page, which can be injected or reused as part of another page object.  `KISS`.
 
-### Managing test data poorly :crossed_flags:
+---
+
+### :crossed_flags: Managing test data poorly :crossed_flags:
 
 Managing test data using this harness itself through the ui for example, terrible practice.  Hopefully you have or can get access to some cool restful services to help you manage the data.  Managing test data
 is most certainly not easy and becomes a behemoth over time.  The debate of randomising data is a long going one.  Please dont use your browsers for prepping and tearing down test data.  I don't even like direct database manipulation either,
 from experience you will spend too long doing maintenance.
 
-### Running sequential tests :crossed_flags:
+---
+
+### :crossed_flags: Running sequential tests :crossed_flags:
 
 Write your tests with parallelisation in mind.  Independent tests aren't enough, consider cross contamination (`system wide settings`) contaminating your tests at runtime.  For example if test A modifies
 a system wide setting it can impact other tests, even tho they are not remotely reliant on each other.  Multi tenancy applications can really help with this, otherwise run a `@NotThreadSafe` run at the end of your run.
 If you are running one test at a time, again I will find you and I will kill you.
 
-### Pointless noise in page objects :crossed_flags:
+---
+
+### :crossed_flags: Pointless noise in page objects :crossed_flags:
 
 Page objects should encapsulate user actions grouped together, not individual actions that interact on a per element basis.  Writing a `Login();` method is better than writing 3 methods to do the steps of logging in.
 
-### Using field injection :crossed_flags:
+---
+
+### :crossed_flags: Using field injection :crossed_flags:
 
 Using field injection with any sort of DI mechanism, I will find you and I will kill you. Yes its easier, but it sucks.  Its gimmicky magic, decreases class testability, masks design errors with large classes.  When you inject into the field often you will 
 not see beefy constructors that can prompt you to do some refactoring.
 
+---
+
+### Please contribute!
 
 Now that we have that out of the way, I would also like that you create atleast 1 pull request to the selenide project when using this framework.  You can find the repository here:
 
 https://github.com/codeborne/selenide
 
-### The framework stack :flags:
+and ofcourse, open PR's here
 
 # :triangular_flag_on_post: Framework stack
 
