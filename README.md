@@ -168,4 +168,4 @@ all `.jmx` files will execute and the report will be available under `/target/jm
 
 Complimentary `.bat` file has been added to make this even easier on a windows environment.  An example of the report can be seen below:
 
-![Performance](https://github.com/symonk/sylenium-framework/blob/master/.images/performance-test.png)
+![Performance](https://github.com/symonk/sylenium-framework/blob/master/.images/performance-test.jpg)
