@@ -66,8 +66,8 @@ public interface FrameworkProperties extends Config {
   @DefaultValue("false")
   boolean isSlackEnabled();
 
-  @Key("slack.api.key")
-  String slackApiKey();
+  @Key("slack.webhook.endpoint")
+  String slackWebhookEndpoint();
 
 
   default Properties getAllProperties() {
@@ -85,7 +85,7 @@ public interface FrameworkProperties extends Config {
     setProperty("use.browsermob.proxy?", String.valueOf(useBrowserMobProxy()));
     setProperty("running.on.travis?", String.valueOf(isThisRunningOnTravis()));
     setProperty("slack.enabled", String.valueOf(isSlackEnabled()));
-    setProperty("slack.api.key", slackApiKey());
+    setProperty("slack.webhook.endpoint", slackWebhookEndpoint());
     }};
   }
 }

@@ -1,7 +1,8 @@
 package io.github.symonk.common.helpers.slack;
 
-/**
- * @author SimonK
- */
+@FunctionalInterface
 public interface Notifyable {
+
+    void notify(final String message);
+
 }
