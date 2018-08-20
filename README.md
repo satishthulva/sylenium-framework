@@ -175,4 +175,12 @@ When executing your tests it is highly recommended to encompass them as part of 
 # :triangular_flag_on_post: Running service or api tests?
 
 
+# :triangular_flag_on_post: How can I configure slack?
+As of default, slack will output total test pass percentage, and names of tests which fail in real time.  This is easily configured by doing the following:
 
+- Go to your_team.slack.com/services/new
+- Search for incoming webHook and click in Add
+- Choose channel to post and press add incoming webhooks integration
+- Set the webhook url in the framework properties (@Default empty)
+- Set the slack notifications enabled to true (@Default false)
+- Both of these properties are required, they can be set at runtime using standard maven -Dslack.enabled etc
