@@ -15,7 +15,7 @@ public class ReportHelper implements ReportInteractable {
 
   private static final String FILE_EXISTS = "environment.properties file already exists, deleting it";
   private static final String DUPLICATE_FILE_ERROR = "io error occurred when checking for duplicate files";
-  private static final String DEFAULT_TRAVIS_PATH = "/home/travis/build/symonk/selenide-testng-allure2-test-automation-framework/gui-tests/target/allure-results/environment.properties";
+  private static final String DEFAULT_TRAVIS_PATH = "/home/travis/build/symonk/sylenium-framework/gui-tests/target/allure-results/environment.properties";
   private static final String DEFAULT_LOCAL_PATH = "target\\allure-results\\environment.properties";
   private static final String PROPERTIES_HEADER = "Generated runtime properties";
   private static final String INVALID_ARGS = "provided arguments do not meet a valid test run, aborting the run";
