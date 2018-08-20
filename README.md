@@ -159,7 +159,7 @@ This framework provides a serious amount of functionality right out of the box.
 -> Maven module for api-testing, includes some example tests.
 ```
 
-# :triangular_flag_on_post: Running performance test?
+# :triangular_flag_on_post: Running performance tests?
 To execute the example performance tests, simply launch a command prompt in the `/performance directory` where the `pom.xml` file resides.  Then execute:
 
 `mvn verify`
@@ -169,3 +169,7 @@ all `.jmx` files will execute and the report will be available under `/target/jm
 Complimentary `.bat` file has been added to make this even easier on a windows environment.  An example of the report can be seen below:
 
 ![Performance](https://github.com/symonk/sylenium-framework/blob/master/.images/performance-test.jpg)
+
+# :triangular_flag_on_post: Running user interface tests?
+
+# :triangular_flag_on_post: Running service or api tests?
