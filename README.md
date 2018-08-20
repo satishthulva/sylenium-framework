@@ -3,6 +3,10 @@
 ![Free](https://img.shields.io/badge/free-open--source-green.svg)
 [![Sonar Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=io.symonk.github%3Aselenide-framework&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.symonk.github%3Aselenide-framework)
 
+### Contact me:
+
+[![Linked In](https://img.shields.io/badge/Add%20Me%20On-LinkedIn-orange.svg)](https://www.linkedin.com/in/simonk09/)
+[![Linked In](https://img.shields.io/badge/Join%20Me%20On-Slack-orange.svg)](https://testersio.slack.com)
 
 ## Sylenium-framework :flags:
 
@@ -155,11 +159,13 @@ This framework provides a serious amount of functionality right out of the box.
 -> Maven module for api-testing, includes some example tests.
 ```
 
+# :triangular_flag_on_post: Running performance test?
+To execute the example performance tests, simply launch a command prompt in the `/performance directory` where the `pom.xml` file resides.  Then execute:
 
-### Contact me:
+`mvn verify`
 
-[![Linked In](https://img.shields.io/badge/Add%20Me%20On-LinkedIn-orange.svg)](https://www.linkedin.com/in/simonk09/)
-[![Linked In](https://img.shields.io/badge/Join%20Me%20On-Slack-orange.svg)](https://testersio.slack.com)
+all `.jmx` files will execute and the report will be available under `/target/jmeter/reports`
 
+Complimentary `.bat` file has been added to make this even easier on a windows environment.  An example of the report can be seen below:
 
-
+![Performance](https://github.com/symonk/sylenium-framework/blob/master/.images/performance-test.png)
