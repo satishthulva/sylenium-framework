@@ -36,9 +36,6 @@ public class ReportHelper implements ReportInteractable {
   private void generateEnvironmentPropertiesFile() {
     final FileOutputStream fos;
     try {
-        log.error(DEFAULT_TRAVIS_PATH);
-        log.error(DEFAULT_LOCAL_PATH);
-        log.error(String.valueOf(properties.isThisRunningOnTravis()));
       final Path pathToFile = Paths.get(properties.isThisRunningOnTravis() ? DEFAULT_TRAVIS_PATH : DEFAULT_LOCAL_PATH);
       if (!removeFileIfExists(pathToFile)) {
         Files.createDirectories(pathToFile.getParent());
