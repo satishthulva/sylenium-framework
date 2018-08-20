@@ -30,8 +30,7 @@ public class TestExecutionListener implements IExecutionListener {
 
   private void configureTestRun() {
     log.info("configuring the test run!");
-
-
+    Configuration.headless = true;
     Configuration.browser = properties.selenideBrowser();
     if (properties.useSeleniumGrid()) {
       Configuration.remote = properties.seleniumGridEndpoint();
