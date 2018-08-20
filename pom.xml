@@ -40,7 +40,7 @@
         <assertj.version>3.10.0</assertj.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
         <owner.version>1.0.10</owner.version>
-        <slack.version>1.2.0</slack.version>
+        <slack.version>1.4.0</slack.version>
     </properties>
 
     <profiles>
@@ -183,10 +183,9 @@
             <artifactId>owner-java8</artifactId>
             <version>${owner.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.ullink.slack/simpleslackapi -->
         <dependency>
-            <groupId>com.ullink.slack</groupId>
-            <artifactId>simpleslackapi</artifactId>
+            <groupId>net.gpedro.integrations.slack</groupId>
+            <artifactId>slack-webhook</artifactId>
             <version>${slack.version}</version>
         </dependency>
     </dependencies>
