@@ -62,6 +62,13 @@ public interface FrameworkProperties extends Config {
   @DefaultValue("false")
   boolean isThisRunningOnTravis();
 
+  @Key("slack.enabled")
+  @DefaultValue("false")
+  boolean isSlackEnabled();
+
+  @Key("slack.api.key")
+  String slackApiKey();
+
 
   default Properties getAllProperties() {
     return new Properties() {{
@@ -77,6 +84,8 @@ public interface FrameworkProperties extends Config {
     setProperty("number.of.retries", String.valueOf(numberOfFailRetries()));
     setProperty("use.browsermob.proxy?", String.valueOf(useBrowserMobProxy()));
     setProperty("running.on.travis?", String.valueOf(isThisRunningOnTravis()));
+    setProperty("slack.enabled", String.valueOf(isSlackEnabled()));
+    setProperty("slack.api.key", slackApiKey());
     }};
   }
 }

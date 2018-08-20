@@ -168,5 +168,8 @@ Complimentary `.bat` file has been added to make this even easier on a windows e
 ![Performance](https://github.com/symonk/sylenium-framework/blob/master/.images/performance-test.jpg)
 
 # :triangular_flag_on_post: Running user interface tests?
+When executing your tests it is highly recommended to encompass them as part of a CI pipeline.  If your 
+
+
 
 # :triangular_flag_on_post: Running service or api tests?
