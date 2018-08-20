@@ -170,15 +170,15 @@ Complimentary `.bat` file has been added to make this even easier on a windows e
 ### :triangular_flag_on_post: Running user interface tests?
 When executing your tests it is highly recommended to encompass them as part of a CI pipeline.  If your 
 
-- placeholder A
-- placeholder B
-- placeholder C
+- placeholder
+- placeholder
+- placeholder
 
 ### :triangular_flag_on_post: Running service or api tests?
 
-- placeholder A
-- placeholder B
-- placeholder C
+- placeholder
+- placeholder
+- placeholder
 
 ### :triangular_flag_on_post: How can I configure slack?
 As of default, slack will output total test pass percentage, and names of tests which fail in real time.  This is easily configured by doing the following:
