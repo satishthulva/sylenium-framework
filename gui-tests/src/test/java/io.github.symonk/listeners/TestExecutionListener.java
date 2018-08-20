@@ -30,7 +30,16 @@ public class TestExecutionListener implements IExecutionListener {
 
   private void configureTestRun() {
     log.info("configuring the test run!");
-    Configuration.headless = true;
+
+    if(properties.isThisRunningOnTravis()) {
+        log.info("Running on travis is enabled!, this is a travis execution");
+        Configuration.browserCapabilities = new DesiredCapabilities();
+        final ChromeOptions travisOptions = new ChromeOptions();
+        travisOptions.addArguments("--no-sandbox");
+        travisOptions.addArguments("--disable-dev-shm-usage");
+        Configuration.browserCapabilities.merge(travisOptions);
+    }
+
     Configuration.browser = properties.selenideBrowser();
     if (properties.useSeleniumGrid()) {
       Configuration.remote = properties.seleniumGridEndpoint();

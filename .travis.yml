@@ -11,7 +11,7 @@ before_install:
 - export CHROME_BIN=/usr/bin/google-chrome
 
 script:
-  - mvn clean verify -pl gui-tests org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+  - mvn clean verify -Dis.running.on.travis=true -pl gui-tests org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
