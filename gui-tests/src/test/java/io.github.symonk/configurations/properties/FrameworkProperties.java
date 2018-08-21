@@ -69,6 +69,15 @@ public interface FrameworkProperties extends Config {
   @Key("slack.webhook.endpoint")
   String slackWebhookEndpoint();
 
+  @Key("testrail.endpoint")
+  String testrailEndpoint();
+
+  @Key("testrail.username")
+  String testRailUsername();
+
+  @Key("testrail.password")
+  String testRailPassword();
+
 
   default Properties getAllProperties() {
     return new Properties() {{
@@ -86,6 +95,9 @@ public interface FrameworkProperties extends Config {
     setProperty("running.on.travis?", String.valueOf(isThisRunningOnTravis()));
     setProperty("slack.enabled", String.valueOf(isSlackEnabled()));
     setProperty("slack.webhook.endpoint", slackWebhookEndpoint());
+    setProperty("testrail.endpoint", testrailEndpoint());
+    setProperty("testrail.username", testRailUsername());
+    setProperty("testrail.password", testRailPassword());
     }};
   }
 }

@@ -23,6 +23,7 @@
         <logstash.version>5.1</logstash.version>
         <allure.version>2.6.0</allure.version>
         <jira.endpoint>https://jira.company.com/browser{}</jira.endpoint>
+        <testrail.endpoint></testrail.endpoint>
         <aspectj.version>1.9.1</aspectj.version>
         <testng.version>6.14.3</testng.version>
         <awaitility.version>3.1.0</awaitility.version>
