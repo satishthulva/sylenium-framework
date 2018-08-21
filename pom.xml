@@ -26,7 +26,7 @@
         <aspectj.version>1.9.1</aspectj.version>
         <testng.version>6.14.3</testng.version>
         <awaitility.version>3.1.0</awaitility.version>
-        <rest-assured.version>3.1.0</rest-assured.version>
+        <rest-assured.version>3.1.1</rest-assured.version>
         <maven.surefire.version>2.22.0</maven.surefire.version>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
         <jackson.version>2.9.6</jackson.version>
@@ -187,6 +187,12 @@
             <groupId>net.gpedro.integrations.slack</groupId>
             <artifactId>slack-webhook</artifactId>
             <version>${slack.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
         </dependency>
     </dependencies>
 
