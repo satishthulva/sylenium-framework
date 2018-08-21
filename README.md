@@ -191,3 +191,9 @@ As of default, slack will output total test pass percentage, and names of tests 
 - Both of these properties are required, they can be set at runtime using standard maven -Dslack.enabled etc
 
 Framework properties are found under `gui-tests/src/test/resources/framework.properties` or can be passed in at runtime.
+
+### :triangular_flag_on_post: How can I configure Jira cloud?
+
+- placeholder
+- placeholder
+- placeholder
