@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Guice(modules = GuiceModule.class)
-public class IntegrationTests {
+public class debugexamples {
 
   private final TestRailIntegratable testRailIntegratable;
 
   @Inject
-  public IntegrationTests(final TestRailIntegratable testRailIntegratable) {
+  public debugexamples(final TestRailIntegratable testRailIntegratable) {
     this.testRailIntegratable = testRailIntegratable;
   }
 
