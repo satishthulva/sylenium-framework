@@ -16,7 +16,6 @@ public class PuppyOrderDetailsPage {
   private static final SelenideElement ORDER_EMAIL_TEXTBOX = $(By.id("order_email"));
   private static final SelenideElement ORDER_PAYMENT_TYPE = $(By.id("order_pay_type"));
 
-
   @Step("Completing the order details")
   public PuppyAdoptionHomePage fillInOrderDetails(final PuppyOrder order) {
     ORDER_NAME_TEXTBOX.val(order.getAdopterName());
@@ -26,5 +25,4 @@ public class PuppyOrderDetailsPage {
     PLACE_ORDER_BUTTON.click();
     return new PuppyAdoptionHomePage();
   }
-
 }

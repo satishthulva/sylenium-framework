@@ -21,6 +21,7 @@ public class LanguageHelper implements ProvidesLanguageValues {
   @Override
   public String getResource(final String key) {
     return ResourceBundle.getBundle(
-            DEFAULT_DIRECTORY + language.getResourceFile(), language.getLocale()).getString(key);
+            DEFAULT_DIRECTORY + language.getResourceFile(), language.getLocale())
+        .getString(key);
   }
 }

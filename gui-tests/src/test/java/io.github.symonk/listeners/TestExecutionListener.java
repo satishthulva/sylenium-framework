@@ -7,14 +7,13 @@ import io.github.symonk.common.helpers.slack.SlackHelper;
 import io.github.symonk.configurations.properties.FrameworkProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.IExecutionListener;
 
 @Slf4j
 public class TestExecutionListener implements IExecutionListener {
 
-  private final SlackHelper slackNotifier = new SlackHelper(ConfigFactory.create(FrameworkProperties.class));
+  private final SlackHelper slackNotifier =
+      new SlackHelper(ConfigFactory.create(FrameworkProperties.class));
   private final FrameworkProperties properties = ConfigFactory.create(FrameworkProperties.class);
   private final ReportInteractable reportHelper = new ReportHelper(properties);
 
@@ -28,8 +27,15 @@ public class TestExecutionListener implements IExecutionListener {
   @Override
   public void onExecutionFinish() {
     log.info("test run finished!");
-    slackNotifier.notify("Total Tests Executed: " + NotificationListener.testsFailed + NotificationListener.testsPassed +
-            "Passed: " + NotificationListener.testsPassed + " | " + "Failed: " + NotificationListener.testsFailed);
+    slackNotifier.notify(
+        "Total Tests Executed: "
+            + NotificationListener.testsFailed
+            + NotificationListener.testsPassed
+            + "Passed: "
+            + NotificationListener.testsPassed
+            + " | "
+            + "Failed: "
+            + NotificationListener.testsFailed);
   }
 
   private void configureTestRun() {
@@ -51,5 +57,4 @@ public class TestExecutionListener implements IExecutionListener {
     log.info("pushing report information");
     this.reportHelper.pushDynamicTestRunPropertiesToReport();
   }
-
 }

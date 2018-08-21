@@ -21,10 +21,10 @@ import java.lang.reflect.Method;
 public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
-  private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+  private static final CustomListener listener =
+      new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
 
   protected final ProvidesLanguageValues languageHelper;
-
 
   @Inject
   public TestBaseTemplate(final ProvidesLanguageValues languageHelper) {
@@ -47,13 +47,11 @@ public class TestBaseTemplate {
     CustomSelenideLogger.addListener("CustomListener", listener.setCurrentLog(method.getName()));
   }
 
-
   @AfterMethod(alwaysRun = true, description = "[Parse Test Logs]")
   public void parseLogFileForTest(final Method method) {
     CustomSelenideLogger.setListenerLogFile(method.getName());
     stopTestLogging();
   }
-
 
   @AfterMethod(alwaysRun = true, description = "[Clear Browser Session Data]")
   public void preventBrowserSessionLeakage() {
@@ -77,5 +75,4 @@ public class TestBaseTemplate {
     MDC.remove(TEST_NAME);
     return name;
   }
-
 }

@@ -22,10 +22,13 @@ public enum SupportedLanguage {
   }
 
   public static SupportedLanguage getLanguage(final String language) {
-    switch(language) {
-      case "english": return ENGLISH;
-      case "french": return FRENCH;
-      default: return ENGLISH;
+    switch (language) {
+      case "english":
+        return ENGLISH;
+      case "french":
+        return FRENCH;
+      default:
+        return ENGLISH;
     }
   }
 

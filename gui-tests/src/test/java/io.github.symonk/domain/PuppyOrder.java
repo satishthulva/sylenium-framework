@@ -29,6 +29,12 @@ public class PuppyOrder {
     this.listOfOrderItems = builder.listOfOrderItems;
   }
 
+  @Override
+  public String toString() {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(this);
+  }
+
   public static class PuppyOrderBuilder {
     private final String adopterName;
     private final String adopterAddress;
@@ -55,11 +61,5 @@ public class PuppyOrder {
     public PuppyOrder build() {
       return new PuppyOrder(this);
     }
-  }
-
-  @Override
-  public String toString() {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    return gson.toJson(this);
   }
 }

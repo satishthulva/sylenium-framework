@@ -4,6 +4,8 @@ import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.GuiceModule;
 import io.github.symonk.data.OrderProvidable;
 import io.github.symonk.domain.PuppyOrder;
+import io.github.symonk.integrations.TestRailIntegratable;
+import io.github.symonk.integrations.testrail.entity.TestRun;
 import io.github.symonk.listeners.NotificationListener;
 import io.github.symonk.listeners.TestExecutionListener;
 import io.github.symonk.pageobjects.pages.PuppyAdoptionHomePage;
@@ -26,9 +28,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   private final OrderProvidable orderProvider;
 
   @Inject
-  public PuppyAdoptionTests(
-      final ProvidesLanguageValues languageHelper,
-      final OrderProvidable orderProvider) {
+  public PuppyAdoptionTests(final ProvidesLanguageValues languageHelper, final OrderProvidable orderProvider) {
     super(languageHelper);
     this.orderProvider = orderProvider;
   }
@@ -40,12 +40,12 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   @Severity(SeverityLevel.CRITICAL)
   public void adoptingHannahWithoutAnyOptions() {
     new PuppyAdoptionHomePage()
-            .openPage()
-            .viewHannahDetails()
-            .adoptPuppy()
-            .completeTheAdoption()
-            .fillInOrderDetails(orderProvider.createRandomOrder())
-            .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
+        .openPage()
+        .viewHannahDetails()
+        .adoptPuppy()
+        .completeTheAdoption()
+        .fillInOrderDetails(orderProvider.createRandomOrder())
+        .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
   }
 
   @Test(description = "Brook can be adopted")
@@ -78,7 +78,6 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
         .orderPriceForAllItemsIsCorrect(
             languageHelper.getResource("total.price.all.options"), order);
   }
-
 
   @AfterClass(alwaysRun = true, description = "[Test Teardown]")
   public void afterClass() {

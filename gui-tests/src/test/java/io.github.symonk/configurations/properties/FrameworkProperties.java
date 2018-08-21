@@ -78,26 +78,27 @@ public interface FrameworkProperties extends Config {
   @Key("testrail.password")
   String testRailPassword();
 
-
   default Properties getAllProperties() {
-    return new Properties() {{
-    setProperty("base.url", baseUrl());
-    setProperty("explicit.wait.timeout", String.valueOf(explicitWaitTimeout()));
-    setProperty("language", language());
-    setProperty("selenide.browser", selenideBrowser());
-    setProperty("use.custom.dimensions?", String.valueOf(useCustomBrowserDimensions()));
-    setProperty("custom.browser.dimensions", browserDimensions());
-    setProperty("use.selenium.grid?", String.valueOf(useSeleniumGrid()));
-    setProperty("selenium.grid.endpoint", seleniumGridEndpoint());
-    setProperty("retry.failures?", String.valueOf(retryOnFailure()));
-    setProperty("number.of.retries", String.valueOf(numberOfFailRetries()));
-    setProperty("use.browsermob.proxy?", String.valueOf(useBrowserMobProxy()));
-    setProperty("running.on.travis?", String.valueOf(isThisRunningOnTravis()));
-    setProperty("slack.enabled", String.valueOf(isSlackEnabled()));
-    setProperty("slack.webhook.endpoint", slackWebhookEndpoint());
-    setProperty("testrail.endpoint", testrailEndpoint());
-    setProperty("testrail.username", testRailUsername());
-    setProperty("testrail.password", testRailPassword());
-    }};
+    return new Properties() {
+      {
+        setProperty("base.url", baseUrl());
+        setProperty("explicit.wait.timeout", String.valueOf(explicitWaitTimeout()));
+        setProperty("language", language());
+        setProperty("selenide.browser", selenideBrowser());
+        setProperty("use.custom.dimensions?", String.valueOf(useCustomBrowserDimensions()));
+        setProperty("custom.browser.dimensions", browserDimensions());
+        setProperty("use.selenium.grid?", String.valueOf(useSeleniumGrid()));
+        setProperty("selenium.grid.endpoint", seleniumGridEndpoint());
+        setProperty("retry.failures?", String.valueOf(retryOnFailure()));
+        setProperty("number.of.retries", String.valueOf(numberOfFailRetries()));
+        setProperty("use.browsermob.proxy?", String.valueOf(useBrowserMobProxy()));
+        setProperty("running.on.travis?", String.valueOf(isThisRunningOnTravis()));
+        setProperty("slack.enabled", String.valueOf(isSlackEnabled()));
+        setProperty("slack.webhook.endpoint", slackWebhookEndpoint());
+        setProperty("testrail.endpoint", testrailEndpoint());
+        setProperty("testrail.username", testRailUsername());
+        setProperty("testrail.password", testRailPassword());
+      }
+    };
   }
 }

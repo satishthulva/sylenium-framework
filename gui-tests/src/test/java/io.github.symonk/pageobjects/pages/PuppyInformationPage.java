@@ -7,12 +7,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class PuppyInformationPage {
 
-    private static final SelenideElement ADOPT_ME_BUTTON = $x("//*[@id='content']/div[2]/div/form/div/input[1]");
+  private static final SelenideElement ADOPT_ME_BUTTON =
+      $x("//*[@id='content']/div[2]/div/form/div/input[1]");
 
-    @Step("Selecting adopt puppy")
-    public PuppyCartPage adoptPuppy() {
-        ADOPT_ME_BUTTON.click();
-        return new PuppyCartPage();
-    }
-
+  @Step("Selecting adopt puppy")
+  public PuppyCartPage adoptPuppy() {
+    ADOPT_ME_BUTTON.click();
+    return new PuppyCartPage();
+  }
 }

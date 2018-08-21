@@ -11,8 +11,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class PuppyAdoptionHomePage {
 
-  private static final SelenideElement BROOK_VIEW_DETAILS_BUTTON = $x("//form[@action='/puppies/4']//input");
-  private static final SelenideElement HANNA_VIEW_DETAILS_BUTTON = $x("//form[@action='/puppies/3']//input");
+  private static final SelenideElement BROOK_VIEW_DETAILS_BUTTON =
+      $x("//form[@action='/puppies/4']//input");
+  private static final SelenideElement HANNA_VIEW_DETAILS_BUTTON =
+      $x("//form[@action='/puppies/3']//input");
   private static final SelenideElement CUSTOMER_MESSAGE = $(By.id("notice"));
 
   @Step("Opening the puppy adoption home page")
@@ -34,6 +36,6 @@ public class PuppyAdoptionHomePage {
 
   @Step("Checking successful adoption message is shown")
   public void messageIsDisplayed(final String expectedMessage) {
-     CUSTOMER_MESSAGE.should(text(expectedMessage));
+    CUSTOMER_MESSAGE.should(text(expectedMessage));
   }
 }

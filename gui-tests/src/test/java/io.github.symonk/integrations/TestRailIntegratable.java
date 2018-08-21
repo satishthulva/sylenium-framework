@@ -1,10 +1,12 @@
 package io.github.symonk.integrations;
 
+import io.github.symonk.integrations.testrail.entity.TestRun;
 
 public interface TestRailIntegratable {
 
-    void initiateRun(final String name);
-    void addTestsToExecution();
-    void updateTestResults();
+  TestRailIntegratable initiateRun(final TestRun run);
 
+  TestRailIntegratable addTestsToExecution();
+
+  TestRailIntegratable updateTestResults();
 }

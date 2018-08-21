@@ -93,12 +93,17 @@ public class WebEventListener implements WebDriverEventListener {
   }
 
   @Override
-  public void beforeChangeValueOf(final WebElement webElement, final WebDriver webDriver, final CharSequence[] charSequences) {
-    log.info(String.format("Attempting to set value of: %s on element: %s", Arrays.toString(charSequences), webElement));
+  public void beforeChangeValueOf(
+      final WebElement webElement, final WebDriver webDriver, final CharSequence[] charSequences) {
+    log.info(
+        String.format(
+            "Attempting to set value of: %s on element: %s",
+            Arrays.toString(charSequences), webElement));
   }
 
   @Override
-  public void afterChangeValueOf(final WebElement webElement, final WebDriver webDriver, final CharSequence[] charSequences) {
+  public void afterChangeValueOf(
+      final WebElement webElement, final WebDriver webDriver, final CharSequence[] charSequences) {
     log.info(String.format("Set the value of an element to: %s", Arrays.toString(charSequences)));
   }
 
@@ -129,7 +134,7 @@ public class WebEventListener implements WebDriverEventListener {
 
   @Override
   public <X> void beforeGetScreenshotAs(final OutputType<X> outputType) {
-   log.info("About to take a screenshot..");
+    log.info("About to take a screenshot..");
   }
 
   @Override
