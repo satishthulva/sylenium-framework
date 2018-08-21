@@ -1,12 +1,12 @@
 package io.github.symonk.integrations;
 
-import io.github.symonk.integrations.testrail.entity.TestRun;
+import io.github.symonk.integrations.testrail.entity.TestRailTestRun;
+
+import java.util.Map;
 
 public interface TestRailIntegratable {
 
-  TestRailIntegratable initiateRun(final TestRun run);
+  int initiateRun(final TestRailTestRun run);
 
-  TestRailIntegratable addTestsToExecution();
-
-  TestRailIntegratable updateTestResults();
+  TestRailIntegratable updateTestResults(final int runId, final Map<Integer, Integer> results);
 }
