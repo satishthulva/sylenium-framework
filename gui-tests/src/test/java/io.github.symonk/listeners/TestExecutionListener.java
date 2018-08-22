@@ -12,8 +12,7 @@ import org.testng.IExecutionListener;
 @Slf4j
 public class TestExecutionListener implements IExecutionListener {
 
-  private final SlackHelper slackNotifier =
-      new SlackHelper(ConfigFactory.create(FrameworkProperties.class));
+  private final SlackHelper slackNotifier = new SlackHelper(ConfigFactory.create(FrameworkProperties.class));
   private final FrameworkProperties properties = ConfigFactory.create(FrameworkProperties.class);
   private final ReportInteractable reportHelper = new ReportHelper(properties);
 
@@ -22,6 +21,7 @@ public class TestExecutionListener implements IExecutionListener {
     log.info("test run starting!");
     configureTestRun();
     pushReportInformation();
+
   }
 
   @Override

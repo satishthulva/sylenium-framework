@@ -8,8 +8,6 @@ import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.properties.FrameworkProperties;
 import io.github.symonk.data.OrderProvidable;
 import io.github.symonk.data.PuppyOrderFactory;
-import io.github.symonk.integrations.TestRailIntegratable;
-import io.github.symonk.integrations.testrail.TestRailClient;
 import lombok.extern.slf4j.Slf4j;
 import org.aeonbits.owner.ConfigFactory;
 
@@ -20,7 +18,6 @@ public class GuiceModule extends AbstractModule {
   protected void configure() {
     bind(ProvidesLanguageValues.class).to(LanguageHelper.class).in(Singleton.class);
     bind(OrderProvidable.class).to(PuppyOrderFactory.class).in(Singleton.class);
-    bind(TestRailIntegratable.class).to(TestRailClient.class).in(Singleton.class);
   }
 
   @Provides

@@ -78,6 +78,10 @@ public interface FrameworkProperties extends Config {
   @Key("testrail.password")
   String testRailPassword();
 
+  @Key("testrail.enabled")
+  @DefaultValue("false")
+  boolean isTestRailEnabled();
+
   default Properties getAllProperties() {
     return new Properties() {
       {
@@ -98,6 +102,7 @@ public interface FrameworkProperties extends Config {
         setProperty("testrail.endpoint", testrailEndpoint());
         setProperty("testrail.username", testRailUsername());
         setProperty("testrail.password", testRailPassword());
+        setProperty("testrail.enabled", String.valueOf(isTestRailEnabled()));
       }
     };
   }
