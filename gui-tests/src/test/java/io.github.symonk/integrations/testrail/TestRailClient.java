@@ -1,60 +1,55 @@
 package io.github.symonk.integrations.testrail;
 
-import io.github.symonk.configurations.properties.FrameworkProperties;
-import io.github.symonk.integrations.TestRailIntegratable;
-import io.github.symonk.integrations.testrail.entity.TestRailResult;
-import io.github.symonk.integrations.testrail.entity.TestRailTestRun;
-import io.restassured.authentication.PreemptiveBasicAuthScheme;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import com.codepine.api.testrail.TestRail;
+import com.codepine.api.testrail.model.Project;
+import com.codepine.api.testrail.model.Run;
+import com.codepine.api.testrail.model.Section;
+import com.codepine.api.testrail.model.Suite;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.inject.Inject;
-
-import java.util.Map;
-
-import static io.restassured.RestAssured.given;
+import java.util.Optional;
 
 @Slf4j
-public class TestRailClient implements TestRailIntegratable {
+public class TestRailClient {
 
-  private static final String ADD_RUN = "/index.php?/api/v2/add_run/";
-  private static final String SET_RESULT_FOR_TEST_CASE = "/index.php?/api/v2/add_result_for_case/";
+  private final TestRail testRail;
+  private Optional<Project> latestProject;
+  private Optional<Suite> latestSuite;
+  private Optional<Section> latestSection;
+  private Optional<Run> latestRun;
 
-  private final RequestSpecBuilder builder = new RequestSpecBuilder();
-  private final RequestSpecification spec;
-
-  @Inject
-  public TestRailClient(final FrameworkProperties properties) {
-    final PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
-    authScheme.setUserName(properties.testRailUsername());
-    authScheme.setPassword(properties.testRailPassword());
-
-    builder
-        .setContentType(ContentType.JSON)
-        .setAuth(authScheme)
-        .setBaseUri(properties.testrailEndpoint());
-
-    spec = builder.build().log().all().filter(new ResponseLoggingFilter());
-
+  public TestRailClient(
+      final String server,
+      final String username,
+      final String password,
+      final String applicationName) {
+    testRail = TestRail.builder(server, username, password).applicationName(applicationName).build();
   }
 
-  @Override
-  public int initiateRun(final TestRailTestRun run) {
-    final Response response = given().spec(spec).body(run).when().post(ADD_RUN + run.getSuite_id());
-    return response.then().extract().path("id");
-  }
-
-  @Override
-  public TestRailIntegratable updateTestResults(final int runId, final Map<Integer, Integer> results) {
-    results.forEach((test, result) -> {
-      given().spec(spec).body(new TestRailResult(result, "Passed comment!")).when().post(SET_RESULT_FOR_TEST_CASE + "/" + runId + "/" + test);
-    });
+  public TestRailClient createProject(final String projectName) {
+    latestProject = Optional.ofNullable(testRail.projects().add(new Project().setName(projectName)).execute());
     return this;
   }
+
+  public TestRailClient createSuite(final String suiteName) {
+    latestSuite = Optional.ofNullable(testRail.suites().add(latestProject.get().getId(), new Suite().setName(suiteName)).execute());
+    return this;
+  }
+
+  public TestRailClient createSection(final String sectionName) {
+    latestSection = Optional.ofNullable(testRail.sections().add(latestProject.get().getId(), new Section().setSuiteId(latestSuite.get().getId()).setName(sectionName)).execute());
+    return this;
+  }
+
+  public TestRailClient createRun(final String runName) {
+      latestRun = Optional.ofNullable(testRail.runs().add(latestProject.get().getId(), new Run().setSuiteId(latestSuite.get().getId()).setName(runName)).execute());
+      return this;
+  }
+
+
+
+
+
 
 
 }

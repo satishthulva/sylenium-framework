@@ -40,6 +40,7 @@
         <jaxb-api.version>2.3.0</jaxb-api.version>
         <owner.version>1.0.10</owner.version>
         <slack.version>1.4.0</slack.version>
+        <testrail.api.version>2.0.0</testrail.api.version>
     </properties>
 
     <profiles>
@@ -192,6 +193,11 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codepine.api</groupId>
+            <artifactId>testrail-api-java-client</artifactId>
+            <version>${testrail.api.version}</version>
         </dependency>
     </dependencies>
 
