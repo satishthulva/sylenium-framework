@@ -180,6 +180,12 @@ When executing your tests it is highly recommended to encompass them as part of 
 - placeholder
 - placeholder
 
+### :triangular_flag_on_post: How can I configured Testrail?
+
+- placeholder
+- placeholder
+- placeholder
+
 ### :triangular_flag_on_post: How can I configure slack?
 As of default, slack will output total test pass percentage, and names of tests which fail in real time.  This is easily configured by doing the following:
 
