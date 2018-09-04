@@ -35,7 +35,7 @@ work later when 10 parallel tests have flooded the table data!
 
 ### :crossed_flags: Overcomplicating page objects :crossed_flags:
 
-The beauty of this framework is we have **NO** driver or page factory code in our page objects, its all handled behind the scenes using custom reflection and java dynamic properties, coupled with smart webdriver management.
+The beauty of this framework is we have **NO** driver or page factory code in our page objects, its all handled behind the scenes using custom reflection and java dynamic proxies, coupled with smart webdriver management.
 Keep your page objects simple, exposing a fluent interface for the tests to consume.  Always remember a page object is **NOT** equal to a page `!=`.  A page object can encapsulate a simple
 dropdown on a page, which can be injected or reused as part of another page object.  `KISS`.
 
@@ -173,6 +173,8 @@ When executing your tests it is highly recommended to encompass them as part of 
 - placeholder
 - placeholder
 - placeholder
+
+![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.images/report-dashboard.jpg)
 
 ### :triangular_flag_on_post: Running service or api tests?
 
