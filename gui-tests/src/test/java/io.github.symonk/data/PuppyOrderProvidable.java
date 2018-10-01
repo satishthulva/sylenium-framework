@@ -4,7 +4,7 @@ import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.common.enumerations.Puppy;
 import io.github.symonk.domain.PuppyOrder;
 
-public interface OrderProvidable {
+public interface PuppyOrderProvidable {
 
   PuppyOrder createRandomOrder();
 

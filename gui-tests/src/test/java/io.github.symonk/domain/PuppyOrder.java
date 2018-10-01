@@ -1,11 +1,9 @@
 package io.github.symonk.domain;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.symonk.common.aop.AttachPostConstruct;
 import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.common.enumerations.Puppy;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +21,7 @@ public class PuppyOrder {
   private final Puppy dog;
   private final List<OrderOptions> listOfOrderItems;
 
+  @AttachPostConstruct
   private PuppyOrder(PuppyOrderBuilder builder) {
     this.dog = builder.dog;
     this.adopterName = builder.adopterName;
@@ -59,8 +58,7 @@ public class PuppyOrder {
       return this;
     }
 
-    public PuppyOrder build() { ;
-      Allure.addAttachment("Order.json", "application/json", new GsonBuilder().setPrettyPrinting().create().toJson(this));
+    public PuppyOrder build() {
       return new PuppyOrder(this);
     }
   }

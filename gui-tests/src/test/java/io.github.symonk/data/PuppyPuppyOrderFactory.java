@@ -4,7 +4,7 @@ import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.common.enumerations.Puppy;
 import io.github.symonk.domain.PuppyOrder;
 
-public class PuppyOrderFactory implements OrderProvidable {
+public class PuppyPuppyOrderFactory implements PuppyOrderProvidable {
 
   @Override
   public PuppyOrder createRandomOrder() {

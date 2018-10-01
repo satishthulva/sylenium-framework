@@ -1,8 +1,9 @@
 package io.github.symonk.testcases;
 
+import io.github.symonk.common.aop.SomeThing;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.GuiceModule;
-import io.github.symonk.data.OrderProvidable;
+import io.github.symonk.data.PuppyOrderProvidable;
 import io.github.symonk.domain.PuppyOrder;
 import io.github.symonk.listeners.NotificationListener;
 import io.github.symonk.listeners.TestExecutionListener;
@@ -23,12 +24,19 @@ import javax.inject.Inject;
 @Listeners({TestExecutionListener.class, NotificationListener.class})
 public class PuppyAdoptionTests extends TestBaseTemplate {
 
-  private final OrderProvidable orderProvider;
+  private final PuppyOrderProvidable orderProvider;
+  private final SomeThing some;
 
   @Inject
-  public PuppyAdoptionTests(final ProvidesLanguageValues languageHelper, final OrderProvidable orderProvider) {
+  public PuppyAdoptionTests(final ProvidesLanguageValues languageHelper, final PuppyOrderProvidable orderProvider, final SomeThing some) {
     super(languageHelper);
     this.orderProvider = orderProvider;
+    this.some = some;
+  }
+
+  @Test
+  public void testerino() {
+    some.speak();
   }
 
   @Test(description = "Hannah can be adopted")
