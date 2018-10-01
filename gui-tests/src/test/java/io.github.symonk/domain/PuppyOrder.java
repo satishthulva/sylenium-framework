@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.common.enumerations.Puppy;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,8 +33,7 @@ public class PuppyOrder {
 
   @Override
   public String toString() {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    return gson.toJson(this);
+    return new GsonBuilder().setPrettyPrinting().create().toJson(this);
   }
 
   public static class PuppyOrderBuilder {
@@ -58,7 +59,8 @@ public class PuppyOrder {
       return this;
     }
 
-    public PuppyOrder build() {
+    public PuppyOrder build() { ;
+      Allure.addAttachment("Order.json", "application/json", new GsonBuilder().setPrettyPrinting().create().toJson(this));
       return new PuppyOrder(this);
     }
   }
