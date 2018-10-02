@@ -21,8 +21,7 @@ import java.lang.reflect.Method;
 public class TestBaseTemplate {
 
   private static final String TEST_NAME = "test";
-  private static final CustomListener listener =
-      new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
+  private static final CustomListener listener = new CustomListener().withPageSource(true).withScreenshot(true).withTestLog(true);
 
   protected final ProvidesLanguageValues languageHelper;
 
