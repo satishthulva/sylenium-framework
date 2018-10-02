@@ -30,7 +30,6 @@ Using this test automation harness as your only automated tests.  Focus on unit 
 ### :crossed_flags: Writing garbage locators :crossed_flags:
 
 Using google chrome `copy-as-xpath` and using it directly etc.  Favour adding unique identifiers to your frontend to aid with automation.  `data-` attributes etc can be extremely useful.
-Using complex xpaths will end in hassle later, and please account for the page state being different later with parallel tests running.  Your useless xpath locator finding row 3 in a table won't 
 work later when 10 parallel tests have flooded the table data!
 
 ---
@@ -176,7 +175,6 @@ When executing your tests it is highly recommended to encompass them as part of 
 - placeholder
 - placeholder
 
-![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.images/report-dashboard.png)
 ![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.resources/.images/report-dashboard.png)
 
 ### :triangular_flag_on_post: Running service or api tests?
