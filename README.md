@@ -1,4 +1,4 @@
-## HacktoberFesters! -> Hello! I will review all PR's within 30 minutes of opening them throughout the day (UK)
+## HacktoberFesters! -> Hello! I will review all PR's within 30 minutes of opening them throughout the day (UK) -> PLEASE COMMENT ON THE ISSUE AND I WILL ASSIGN IT TO YOU TO AVOID SOMEONE ELSE DOING IT BEFORE YOU OPEN A PR, ASSIGNED ISSUES WILL ONLY BE MERGED TO AVOID PEOPLE WASTING THEIR TIME.
 
 [![Build Status](https://api.travis-ci.org/symonk/sylenium-framework.svg?branch=master)](https://travis-ci.org/symonk/sylenium-framework)
 [![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/symonk/selenide-testng-allure2-test-automation-framework/blob/master/LICENSE)
