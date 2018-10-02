@@ -1,15 +1,17 @@
 package io.github.symonk.configurations.guice;
 
+import org.aeonbits.owner.ConfigFactory;
+
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import com.google.inject.assistedinject.FactoryModuleBuilder;
+
 import io.github.symonk.common.helpers.localisation.LanguageHelper;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.properties.FrameworkProperties;
 import io.github.symonk.data.OrderProvidable;
-import io.github.symonk.data.PuppyOrderFactory;
 import lombok.extern.slf4j.Slf4j;
-import org.aeonbits.owner.ConfigFactory;
 
 @Slf4j
 public class GuiceModule extends AbstractModule {
@@ -17,7 +19,8 @@ public class GuiceModule extends AbstractModule {
   @Override
   protected void configure() {
     bind(ProvidesLanguageValues.class).to(LanguageHelper.class).in(Singleton.class);
-    bind(OrderProvidable.class).to(PuppyOrderFactory.class).in(Singleton.class);
+	install(new FactoryModuleBuilder()
+		     .build(OrderProvidable.class));
   }
 
   @Provides

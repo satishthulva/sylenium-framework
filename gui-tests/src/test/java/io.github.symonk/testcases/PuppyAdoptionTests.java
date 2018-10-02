@@ -1,5 +1,7 @@
 package io.github.symonk.testcases;
 
+import io.github.symonk.common.enumerations.OrderOptions;
+import io.github.symonk.common.enumerations.Puppy;
 import io.github.symonk.common.helpers.localisation.ProvidesLanguageValues;
 import io.github.symonk.configurations.guice.GuiceModule;
 import io.github.symonk.data.OrderProvidable;
@@ -42,7 +44,7 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
         .viewHannahDetails()
         .adoptPuppy()
         .completeTheAdoption()
-        .fillInOrderDetails(orderProvider.createRandomOrder())
+        .fillInOrderDetails(orderProvider.createPuppyOrder(Puppy.HANNA, "random", "rand@om.com", "random-add"))
         .messageIsDisplayed(languageHelper.getResource("successful.adoption.message"));
   }
 
@@ -52,7 +54,10 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   @TmsLink("2")
   @Severity(SeverityLevel.CRITICAL)
   public void adoptingBrookWithAllOptions() {
-    final PuppyOrder order = orderProvider.createRandomOrderWithAllOptions();
+    final PuppyOrder order = orderProvider.createPuppyOrder(Puppy.BROOK, "random", "rand@om.com", "random-add", OrderOptions.COLLAR,
+            OrderOptions.CHEW_TOY,
+            OrderOptions.TRAVEL_CARRIER,
+            OrderOptions.FIRST_VET_VISIT);
     new PuppyAdoptionHomePage()
         .openPage()
         .viewBrookDetails()
@@ -68,7 +73,10 @@ public class PuppyAdoptionTests extends TestBaseTemplate {
   @TmsLink("3")
   @Severity(SeverityLevel.CRITICAL)
   public void optionsAreCorrectlyBilled() {
-    final PuppyOrder order = orderProvider.createRandomOrderWithAllOptions();
+    final PuppyOrder order = orderProvider.createPuppyOrder(Puppy.BROOK, "random", "rand@om.com", "random-add", OrderOptions.COLLAR,
+            OrderOptions.CHEW_TOY,
+            OrderOptions.TRAVEL_CARRIER,
+            OrderOptions.FIRST_VET_VISIT);
     new PuppyAdoptionHomePage()
         .openPage()
         .viewBrookDetails()

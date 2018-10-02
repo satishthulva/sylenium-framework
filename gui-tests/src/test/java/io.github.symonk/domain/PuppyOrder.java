@@ -1,17 +1,19 @@
 package io.github.symonk.domain;
 
-import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import com.google.gson.GsonBuilder;
+import com.google.inject.assistedinject.Assisted;
+import com.google.inject.assistedinject.AssistedInject;
+
 import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.common.enumerations.Puppy;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @Slf4j
 @Data
@@ -23,6 +25,22 @@ public class PuppyOrder {
   private final Puppy dog;
   private final List<OrderOptions> listOfOrderItems;
 
+  @AssistedInject
+  public PuppyOrder(@Assisted("dog") Puppy dog, @Assisted("name") String adopterName, @Assisted("email") String adopterEmail, 
+		  @Assisted("address") String adopterAddress, @Assisted("options") OrderOptions ... orderOptions){
+	    this.dog = dog;
+	    this.adopterName = adopterName;
+	    this.adopterAddress = adopterAddress;
+	    this.adopterEmail = adopterEmail;
+	    if(orderOptions != null && orderOptions.length > 0) {
+	    	listOfOrderItems = Arrays.asList(orderOptions);
+	    } else {
+	    	listOfOrderItems = new ArrayList<>();
+	    }
+
+	    // TODO : Allure call happening in the builder class need to be made here ?
+  }
+  
   private PuppyOrder(PuppyOrderBuilder builder) {
     this.dog = builder.dog;
     this.adopterName = builder.adopterName;

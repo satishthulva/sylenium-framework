@@ -4,15 +4,15 @@ import io.github.symonk.common.enumerations.OrderOptions;
 import io.github.symonk.common.enumerations.Puppy;
 import io.github.symonk.domain.PuppyOrder;
 
-public class PuppyOrderFactory implements OrderProvidable {
+public class PuppyOrderFactory {
 
-  @Override
+
   public PuppyOrder createRandomOrder() {
     return new PuppyOrder.PuppyOrderBuilder("random", "random-add", "rand@om.com", Puppy.HANNA)
         .build();
   }
 
-  @Override
+
   public PuppyOrder createRandomOrderWithAllOptions() {
     return new PuppyOrder.PuppyOrderBuilder("random", "random-add", "rand@om.com", Puppy.BROOK)
         .addOptions(
@@ -23,7 +23,6 @@ public class PuppyOrderFactory implements OrderProvidable {
         .build();
   }
 
-  @Override
   public PuppyOrder createPuppyOrder(
       final String name,
       final String address,
