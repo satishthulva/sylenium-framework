@@ -55,8 +55,8 @@ public class TestBaseTemplate {
 
   @AfterMethod(alwaysRun = true, description = "[Clear Browser Session Data]")
   public void preventBrowserSessionLeakage() {
-    Selenide.clearBrowserLocalStorage();
-    Selenide.clearBrowserCookies();
+    //    Selenide.clearBrowserLocalStorage(); --> closing browser so no need to clean up state
+    //    Selenide.clearBrowserCookies(); --> closing browser so no need to clean up state
     Selenide.close();
   }
 
