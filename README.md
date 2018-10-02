@@ -30,7 +30,7 @@ Using this test automation harness as your only automated tests.  Focus on unit 
 ### :crossed_flags: Writing garbage locators :crossed_flags:
 
 Using google chrome `copy-as-xpath` and using it directly etc.  Favour adding unique identifiers to your frontend to aid with automation.  `data-` attributes etc can be extremely useful.
-Using complex xpaths will end in hassle later, and please account for the page state being different later with parallel tests running.  Your useless xpath locator finding row 3 in a table wont 
+Using complex xpaths will end in hassle later, and please account for the page state being different later with parallel tests running.  Your useless xpath locator finding row 3 in a table won't 
 work later when 10 parallel tests have flooded the table data!
 
 ---
@@ -54,7 +54,7 @@ from experience you will spend too long doing maintenance.
 ### :crossed_flags: Running sequential tests :crossed_flags:
 
 Write your tests with parallelisation in mind.  Independent tests aren't enough, consider cross contamination (`system wide settings`) contaminating your tests at runtime.  For example if test A modifies
-a system wide setting it can impact other tests, even tho they are not remotely reliant on each other.  Multi tenancy applications can really help with this, otherwise run a `@NotThreadSafe` run at the end of your run.
+a system wide setting it can impact other tests, even though they are not remotely reliant on each other.  Multi tenancy applications can really help with this, otherwise run a `@NotThreadSafe` run at the end of your run.
 If you are running one test at a time, again I will find you and I will kill you.
 
 ---
@@ -74,7 +74,7 @@ not see beefy constructors that can prompt you to do some refactoring.
 
 ### :crossed_flags: Not using CI :crossed_flags:
 
-Running tests locally is easy, get your tests into a scalable distributed execution mechanism within a CI pipeline. **note:** running locally is very useful, we can guard our feature branches that way. CI can help guard master PR's and production
+Running tests locally is easy, get your tests into a scalable distributed execution mechanism within a CI pipeline. **note:** running locally is very useful, we can guard our feature branches that way. CI can help guard master PRs and production
 
 ---
 
@@ -84,7 +84,7 @@ Now that we have that out of the way, I would also like that you create atleast 
 
 https://github.com/codeborne/selenide
 
-and ofcourse, open PR's here
+and ofcourse, open PRs here
 
 ---
 
