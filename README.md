@@ -176,7 +176,6 @@ When executing your tests it is highly recommended to encompass them as part of 
 - placeholder
 - placeholder
 
-![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.images/report-dashboard.png)
 ![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.resources/.images/report-dashboard.png)
 
 ### :triangular_flag_on_post: Running service or api tests?
