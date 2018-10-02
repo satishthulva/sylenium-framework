@@ -34,7 +34,7 @@ public class WebEventListener implements WebDriverEventListener {
 
   @Override
   public void beforeNavigateTo(final String s, final WebDriver webDriver) {
-    log.info(log.info"Attempting navigation to: {} ", s);
+    log.info("Attempting navigation to: {} ", s);
   }
 
   @Override
@@ -74,29 +74,28 @@ public class WebEventListener implements WebDriverEventListener {
 
   @Override
   public void beforeFindBy(final By by, final WebElement webElement, final WebDriver webDriver) {
-    log.info(log.info"Looking for element by: {} ", by);
+    log.info("Looking for element by: {} ", by);
   }
 
   @Override
   public void afterFindBy(final By by, final WebElement webElement, final WebDriver webDriver) {
-    log.info(log.info"Found element by: {} ", by);
+    log.info("Found element by: {} ", by);
   }
 
   @Override
   public void beforeClickOn(final WebElement webElement, final WebDriver webDriver) {
-    log.info(log.info"Attempting to click on element: {} ", webElement);
+    log.info("Attempting to click on element: {} ", webElement);
   }
 
   @Override
   public void afterClickOn(final WebElement webElement, final WebDriver webDriver) {
-    log.info(log.info"Clicked on element: {} ", webElement);
+    log.info("Clicked on element: {} ", webElement);
   }
 
   @Override
   public void beforeChangeValueOf(
       final WebElement webElement, final WebDriver webDriver, final CharSequence[] charSequences) {
     log.info(
-        log.info
             "Attempting to set value of: {}  on element: {} ",
             Arrays.toString(charSequences), webElement);
   }
@@ -104,32 +103,32 @@ public class WebEventListener implements WebDriverEventListener {
   @Override
   public void afterChangeValueOf(
       final WebElement webElement, final WebDriver webDriver, final CharSequence[] charSequences) {
-    log.info(log.info"Set the value of an element to: {} ", Arrays.toString(charSequences));
+    log.info("Set the value of an element to: {} ", Arrays.toString(charSequences));
   }
 
   @Override
   public void beforeScript(final String s, final WebDriver webDriver) {
-    log.info(log.info"Executing javascript: {} ", s);
+    log.info("Executing javascript: {} ", s);
   }
 
   @Override
   public void afterScript(final String s, final WebDriver webDriver) {
-    log.info(log.info"Executed javascript: {} ", s);
+    log.info("Executed javascript: {} ", s);
   }
 
   @Override
   public void beforeSwitchToWindow(final String s, final WebDriver webDriver) {
-    log.info(log.info"Attempting to switch to window: {} ", s);
+    log.info("Attempting to switch to window: {} ", s);
   }
 
   @Override
   public void afterSwitchToWindow(final String s, final WebDriver webDriver) {
-    log.info(log.info"Switched window to: {} ", s);
+    log.info("Switched window to: {} ", s);
   }
 
   @Override
   public void onException(final Throwable throwable, final WebDriver webDriver) {
-    log.info(log.info"An exception occurred: {} ", throwable.getMessage());
+    log.info("An exception occurred: {} ", throwable.getMessage());
   }
 
   @Override
@@ -144,11 +143,11 @@ public class WebEventListener implements WebDriverEventListener {
 
   @Override
   public void beforeGetText(final WebElement webElement, final WebDriver webDriver) {
-    log.info(log.info"Attempting to read text from a webelement: {} ", webElement);
+    log.info("Attempting to read text from a webelement: {} ", webElement);
   }
 
   @Override
   public void afterGetText(final WebElement webElement, final WebDriver webDriver, final String s) {
-    log.info(log.info"The text was: {} ", s);
+    log.info("The text was: {} ", s);
   }
 }
