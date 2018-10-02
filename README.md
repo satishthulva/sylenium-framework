@@ -167,7 +167,7 @@ all `.jmx` files will execute and the report will be available under `/target/jm
 
 Complimentary `.bat` file has been added to make this even easier on a windows environment.  An example of the report can be seen below:
 
-![Performance](https://github.com/symonk/sylenium-framework/blob/master/.images/performance-test.jpg)
+![Performance](https://github.com/symonk/sylenium-framework/blob/master/.resources/.images/performance-test.jpg)
 
 ### :triangular_flag_on_post: Running user interface tests?
 When executing your tests it is highly recommended to encompass them as part of a CI pipeline.  If your 
@@ -177,6 +177,7 @@ When executing your tests it is highly recommended to encompass them as part of 
 - placeholder
 
 ![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.images/report-dashboard.png)
+![User Interface](https://github.com/symonk/sylenium-framework/blob/master/.resources/.images/report-dashboard.png)
 
 ### :triangular_flag_on_post: Running service or api tests?
 
